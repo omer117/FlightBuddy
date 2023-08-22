@@ -10,9 +10,11 @@ import ConnectingAirportsIcon from '@mui/icons-material/ConnectingAirports';
 
 export default function NavbarComponent() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed">
-        <Toolbar>
+    <Box sx={{
+      flexGrow: 1,
+    }}>
+      <AppBar position="fixed"
+      >        <Toolbar>
           <IconButton
             size="large"
             edge="start"
@@ -21,10 +23,10 @@ export default function NavbarComponent() {
             sx={{ mr: 2 }}
           >
             <ConnectingAirportsIcon
-            fontSize="large" />
+              fontSize="large" />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            FlightBuddy
           </Typography>
           <Button color="inherit" >Login</Button>
         </Toolbar>
