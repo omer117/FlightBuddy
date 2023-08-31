@@ -1,0 +1,106 @@
+@mixin paragraphStyiling {
+    color: #000;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px; /* 64% */
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.field {
+    margin: 2%;
+}
+
+.mainDivContainer {
+    margin: auto !important;
+    background-color: #8e6ed4 !important;
+}
+
+.mainResultDiv {
+    border-radius: 20px;
+    background: #d9d9d9;
+    margin: auto;
+    padding: 1%;
+    width: 73%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+
+    .infoDiv {
+        display: flex;
+
+        .midInfoDiv {
+            padding: 3% 0 3% 0;
+            margin-top: 2%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .Duration {
+                color: #8e6ed4 !important;
+
+                @include paragraphStyiling;
+            }
+
+            .flightCodes {
+                color: #8e6ed4 !important;
+                @include paragraphStyiling;
+            }
+            .illustrate {
+                @include paragraphStyiling;
+            }
+            .stopsInfo {
+                @include paragraphStyiling;
+            }
+        }
+
+        div {
+            text-align: center;
+        }
+    }
+}
+
+.pricingDiv {
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
+    margin-bottom: 0;
+    margin-left: 74%;
+    width: fit-content;
+    padding: 0.7%;
+    background-color: rgb(12, 204, 12);
+    .header {
+        display: flex;
+    }
+
+    .priceDiv {
+        display: flex;
+    }
+}
+
+.airportHeader {
+    color: #8e6ed4 !important;
+    font-size: 20px;
+    @include paragraphStyiling;
+}
+
+.airportName {
+    font-size: 14px;
+    @include paragraphStyiling;
+}
+
+.airportCountry {
+    font-size: 14px;
+    @include paragraphStyiling;
+}
+.timeOfDepartureDate {
+    color: #8e6ed4 !important;
+    font-size: 14px;
+    @include paragraphStyiling;
+}
+.timeOfDeparture {
+    color: #8e6ed4 !important;
+    font-size: 14px;
+    @include paragraphStyiling;
+}

@@ -1,8 +1,19 @@
-.root{
-    // margin:  10% 10% !important
+.mainSearchDiv{
+    // background-image: url('../../images/appBackground.png');
+    width: 224vh;
+    height: 140vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
-
-.headerDiv {
-    width:fit-content;
-    margin: 0 auto
-}
+.placesSearchDiv{
+    display:flex ;
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+    margin-right: 29%;
+    gap: 39%;
+}    
