@@ -4,7 +4,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-// import Link from "@mui/material/Link";
 import {Link}  from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -82,6 +81,7 @@ export default function LogInPage() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  htmlFor="email"
                   autoFocus
                 />
                 <TextField
@@ -93,6 +93,7 @@ export default function LogInPage() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  htmlFor="password"
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}

@@ -1,6 +1,6 @@
 import './App.scss';
-// import RegisterPage from '../../routes/Auth/RegisterPage/RegisterPage';
-// import LogInPage  from '../../routes/Auth/LogInPage/LogInPage';
+import RegisterPage from '../../routes/Auth/RegisterPage/RegisterPage';
+import LogInPage  from '../../routes/Auth/LogInPage/LogInPage';
 import SearchPage from '../../routes/searchPage/Search';
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
@@ -13,11 +13,10 @@ export function App() {
 
   return (
     <>
-      {/* <NavbarComponent /> */}
-      {/* <div>hi</div> */}
+ 
       <Routes>
-        {/* <Route path="/Register" element={<RegisterPage />} /> */}
-        {/* <Route path="/Search" element={<SearchPage />} /> */}
+        <Route path="/Register" element={<RegisterPage />} />
+        <Route path="/LogIn" element={<LogInPage />} />
         <Route path="/result/:Orig" element={<ResultPage data={chosenAirportsDataList}/>} /> 
         <Route path="/" element={<SearchPage setterFunction={setChosenAirportsDataList}/>} />
       </Routes>
