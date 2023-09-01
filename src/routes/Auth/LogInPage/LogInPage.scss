@@ -1,0 +1,25 @@
+.thirdParty {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom:7% !important;
+}
+
+.facebookBtn {
+    background: #5a6175 !important ;
+    width: 25%;
+}
+
+.googleBtn {
+    background: #faf6f4 !important;
+    width: 25%;
+}
+
+.appleBtn {
+    background: #fff !important;
+    width: 25%;
+}
+
+.logInMainDiv {
+    margin: 1% 0 1% 0;
+}

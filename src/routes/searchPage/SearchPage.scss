@@ -1,19 +1,86 @@
-.mainSearchDiv{
-    // background-image: url('../../images/appBackground.png');
-    width: 224vh;
-    height: 140vh;
+.searchDiv {
+    margin-right: 20% !important;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
 }
-.placesSearchDiv{
-    display:flex ;
+
+.textFieldStl {
+    border-radius: 8px;
+    border: 1px solid #dad7d5;
+    background: #e7e7e7;
+}
+
+p {
+    color: #fff;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 53.333% */
+}
+
+.placesSearchDiv {
+    display: flex;
     flex-direction: row;
     margin: auto;
     width: 100%;
-    margin-right: 29%;
+    margin-right: 32%;
     gap: 39%;
-}    
+}
+
+.findAPlaceBtn {
+    margin-top: 5% !important;
+    margin-left: 39% !important;
+    border-radius: 24px;
+    background: #7b49e6;
+    min-height: 48px;
+    justify-content: center;
+    align-items: center;
+    color: #e7e7e7;
+    text-align: center;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px; /* 53.333% */
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.dateSearchDiv {
+    margin-left: 60% !important;
+}
+
+.search2Div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8%;
+
+    h2 {
+        margin:3%;
+        color: #fff;
+        text-align: center;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 16px; /* 53.333% */
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+    }
+}
+
+.airportsList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .airportClass {
+        width: 20%;
+        height: 40%;
+        padding: 2%;
+        background-color: #dad7d5;
+    }
+}

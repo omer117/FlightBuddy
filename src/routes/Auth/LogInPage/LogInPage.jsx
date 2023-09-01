@@ -1,11 +1,14 @@
+import "./LogInPage.scss";
+import googleIcon from "../../../images/google.svg";
+import appleIcon from "../../../images/apple.svg";
+import facebookIcon from "../../../images/facebook.svg";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-// import Link from "@mui/material/Link";
-import {Link}  from "react-router-dom";
+import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -15,6 +18,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const defaultTheme = createTheme();
 
+
+// handles the submiting action of the log In Button.
 const handleSubmit = (event) => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
@@ -28,7 +33,12 @@ export default function LogInPage() {
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
-        <Grid container component="main" sx={{ height: "100vh" }}>
+        <Grid
+          container
+          component="main"
+          className="logInMainDiv"
+          sx={{ height: "100vh" }}
+        >
           <CssBaseline />
           <Grid
             item
@@ -82,6 +92,7 @@ export default function LogInPage() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  htmlFor="email"
                   autoFocus
                 />
                 <TextField
@@ -93,6 +104,7 @@ export default function LogInPage() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  htmlFor="password"
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
@@ -102,10 +114,35 @@ export default function LogInPage() {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: "#7B49E6" }}
                 >
                   Sign In
                 </Button>
+                <Grid className="thirdParty" sx={{ mt: 1, mb: 1 }}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    className="googleBtn"
+
+                  >
+                    <img src={googleIcon} alt="" />
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    className="facebookBtn"
+                  >
+                    <img src={facebookIcon} alt="" />
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    className="appleBtn"
+
+                  >
+                    <img src={appleIcon} alt="" />
+                  </Button>
+                </Grid>
                 <Grid container>
                   <Grid item xs>
                     <Link href="/register" variant="body2">
@@ -116,7 +153,7 @@ export default function LogInPage() {
                     <Link to="/Register" variant="body2">
                       {"Don't have an account? Sign Up"}
                     </Link>
-                  </Grid>                   
+                  </Grid>
                 </Grid>
                 <Link to="/Search">Skip</Link>
               </Box>
