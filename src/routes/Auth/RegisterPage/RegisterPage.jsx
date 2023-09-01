@@ -12,6 +12,8 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 
+
+// handles the submiting action of the Register Button.
 export default function RegisterPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -99,21 +101,10 @@ export default function RegisterPage() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, backgroundColor: "#7B49E6" }}
               >
-                Sign In
+                Register
               </Button>
-              <Grid className="thirdParty" sx={{ mt: 1, mb: 1 }}>
-                <Button type="submit" variant="contained">
-                  google
-                </Button>
-                <Button type="submit" variant="contained">
-                  Facebook
-                </Button>
-                <Button type="submit" variant="contained">
-                  Apple
-                </Button>
-              </Grid>
               <Grid container>
                 <Grid item xs>
                   <Link href="/register" variant="body2">

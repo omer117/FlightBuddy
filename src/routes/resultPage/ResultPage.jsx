@@ -6,13 +6,16 @@ import ResultComponent from "../../components/ResultComponent/resultComponent";
 import airplane from "../../images/airplane-travel-svgrepo-com 2.svg";
 
 export default function ResultPage(props) {
-  const { Orig } = useParams();
-  const [results, setResults] = useState();
-  const [resultsJsx, setResultsJsx] = useState();
+  const { Orig } = useParams(); 
+  const [results, setResults] = useState(); //result data
+  const [resultsJsx, setResultsJsx] = useState();  //results jsx array of objects
 
   console.log(props.data);
   console.log(Orig);
 
+
+
+  //!!  This is a function that get result of prices from the API 
 //   async function OrigSetter(AirportFrom, AirportTo, departureDate) {
 //     axios
 //       .post("getResultForAlgo", {
@@ -37,6 +40,8 @@ export default function ResultPage(props) {
     setter();
   }, []);
 
+
+  // A mapped array that returns a list of JSX objects that contain flight result data. 
   useEffect(() => {
     let resultJSX = results?.map((result) => {
       return <ResultComponent resultData={result} />;

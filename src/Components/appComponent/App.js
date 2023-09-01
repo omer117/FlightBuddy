@@ -5,7 +5,6 @@ import SearchPage from '../../routes/searchPage/Search';
 import { Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
 import ResultPage from '../../routes/resultPage/ResultPage';
-// import ResultPage from '../../routes/resultPage/ResultPage';
 
 
 export function App() {
@@ -16,9 +15,9 @@ export function App() {
  
       <Routes>
         <Route path="/Register" element={<RegisterPage />} />
-        <Route path="/LogIn" element={<LogInPage />} />
+        <Route path="/" element={<LogInPage />} />
         <Route path="/result/:Orig" element={<ResultPage data={chosenAirportsDataList}/>} /> 
-        <Route path="/" element={<SearchPage setterFunction={setChosenAirportsDataList}/>} />
+        <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList}/>} />
       </Routes>
     </>
   );

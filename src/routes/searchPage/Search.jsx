@@ -1,19 +1,25 @@
-import { useEffect, useState } from "react";
 import "./SearchPage.scss";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function SearchPage(props) {
+  // All of the names of the big airports of the world
   const [airportsNames, setAirportNames] = useState([]);
+  // Airports data lists that contain name and code
   const [airportDataList, setAirportDataList] = useState([]);
+  // List that contains [first chosen airport,second chosen airport,date of departure]
   const [chosenData, setChosenData] = useState([]);
+  //  Airports that was given by the algorithm
   const [listOfAirports, setListOfAirports] = useState([]);
+  //  The data of airports that was given by the algorithm
   const [listOfAirportAlgoData, setListOfAirportAlgoData] = useState([]);
 
   function ComboBox(props) {
+    console.log(listOfAirports);
     return (
       <Autocomplete
         disablePortal={true}
@@ -23,6 +29,7 @@ export default function SearchPage(props) {
         sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField
+            className="textFieldStl"
             {...params}
             label="airportList"
             variant="outlined"
@@ -86,6 +93,8 @@ export default function SearchPage(props) {
   };
 
   useEffect(() => {
+    // a function that gets the list of airports after the algorithm has finished
+    // using a function because you cannot async a useEffect function callback in react
     async function setter() {
       await axios
         .post("http://localhost:3004/getAirportsData", {
@@ -100,6 +109,7 @@ export default function SearchPage(props) {
   }, [chosenData]);
 
   useEffect(() => {
+    // Gets the data of the algo-chosen airports
     async function setter() {
       let tempArr = [];
       for (let i = 0; i < listOfAirports.length; i++) {
@@ -111,15 +121,15 @@ export default function SearchPage(props) {
             tempArr.push(response.data);
           });
       }
-      console.log(tempArr);
       setListOfAirportAlgoData(tempArr);
     }
     setter();
   }, [listOfAirports]);
 
+  // A mapped array of airports data that goes to JSX Object.
   let chosenList = listOfAirportAlgoData?.map((airport) => {
     return (
-      <div>
+      <div className="airportClass">
         <Link to={`result/${airport.Orig}`}>
           <div className="Name">{airport.Name}</div>
         </Link>
@@ -149,16 +159,26 @@ export default function SearchPage(props) {
               <input type="date" htmlFor="dateOfFlight" name="dateOfFlight" />
             </div>
           </form>
-          <Button
-            className="findAPlaceBtn"
-            variant="contained"
-            type="submit"
-            form="findAirportForm"
-            value="Submit"
-          ></Button>
         </div>
+        <Button
+          className="findAPlaceBtn"
+          variant="contained"
+          type="submit"
+          form="findAirportForm"
+          value="Submit"
+        >
+          Find us a place to meet at !
+        </Button>
         <div className="search2Div">
-          {chosenList.length > 0 ? chosenList : <></>}
+          {chosenList.length > 0 ? (
+            <div>
+              <h2>This is what our algorhithem found for you</h2>
+              <div className="airportsList">{chosenList}</div>
+              <h2>Choose one and see your price options</h2>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
