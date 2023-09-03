@@ -1,7 +1,7 @@
 import "./LogInPage.scss";
-import googleIcon from "../../../images/google.svg";
-import appleIcon from "../../../images/apple.svg";
-import facebookIcon from "../../../images/facebook.svg";
+import googleIcon from "../../../assets/images/google.svg";
+import appleIcon from "../../../assets/images/apple.svg";
+import facebookIcon from "../../../assets/images/facebook.svg";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,7 +17,6 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const defaultTheme = createTheme();
-
 
 // handles the submiting action of the log In Button.
 const handleSubmit = (event) => {
@@ -123,7 +122,6 @@ export default function LogInPage() {
                     type="submit"
                     variant="contained"
                     className="googleBtn"
-
                   >
                     <img src={googleIcon} alt="" />
                   </Button>
@@ -138,7 +136,6 @@ export default function LogInPage() {
                     type="submit"
                     variant="contained"
                     className="appleBtn"
-
                   >
                     <img src={appleIcon} alt="" />
                   </Button>
