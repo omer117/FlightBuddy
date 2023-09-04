@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import "./resultComponent.scss";
 
 export default function ResultComponent(props) {
+  function clickHandler(){
+  }
   return (
     <div className="field">
       <div className="mainResultDiv">
@@ -25,7 +27,6 @@ export default function ResultComponent(props) {
           <div className="midInfoDiv">
             <div className="Duration">{props.resultData.duration.text}</div>
             <div className="flightCodes">{props.resultData.path[0]}</div>
-            <div className="illustrate"></div>
             <div className="stopsInfo">
               <p>
                 {props.resultData.stops}-
@@ -53,7 +54,6 @@ export default function ResultComponent(props) {
         </div>
       </div>
       <div>
-        <Button onClick={props.firstFlightSetter(props.resultData)}>Choose me!</Button>
       </div>
       <div className="pricingDiv">
         <div className="header">
@@ -62,6 +62,7 @@ export default function ResultComponent(props) {
         <div className="priceDiv">
           {props.resultData.totals.total} {props.resultData.currency}
         </div>
+        <div><Button onClick={clickHandler()}>choose me!</Button></div>
       </div>
     </div>
   );
