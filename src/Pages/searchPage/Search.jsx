@@ -45,7 +45,7 @@ export default function SearchPage(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3004/getAirports")
+      .get("http://localhost:3004/flightsAPI/getAirports")
       .then((response) => {
         let data = response.data.airports;
         let newAirportsArr = [];
@@ -97,7 +97,7 @@ export default function SearchPage(props) {
     // using a function because you cannot async a useEffect function callback in react
     async function setter() {
       await axios
-        .post("http://localhost:3004/getAirportsData", {
+        .post("http://localhost:3004/flightsAPI/useAirportAlgo", {
           firstAirport: chosenData[0],
           secondAirport: chosenData[1],
         })
@@ -114,7 +114,7 @@ export default function SearchPage(props) {
       let tempArr = [];
       for (let i = 0; i < listOfAirports.length; i++) {
         await axios
-          .post("http://localhost:3004/getAllChosenAirportsInfo", {
+          .post("http://localhost:3004/flightsAPI/getChosenAirportData", {
             targetAirport: listOfAirports[i].arr_code,
           })
           .then((response) => {
