@@ -2,7 +2,19 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom:7% !important;
+    margin-bottom: 7% !important;
+}
+
+.LetsStartDiv {
+    margin-top: 7%;
+    margin-bottom: 3%;
+    .paragClass {
+        text-shadow: 1px 1px #ffd0d0;
+        font-size:x-large;
+        color: #000;
+        font-weight: bold;
+        text-align: center;
+    }
 }
 
 .facebookBtn {
@@ -15,11 +27,44 @@
     width: 25%;
 }
 
+.toSearchLink {
+    a {
+        text-decoration: none;
+    }
+    margin: 9% 36% -32px 34%;
+}
+
+.divContainerLinks {
+
+    height: 3vh;
+    margin-bottom: 2%;
+    a {
+        text-decoration: none !important;
+        text-align: center;
+    }
+}
 .appleBtn {
     background: #fff !important;
     width: 25%;
 }
+.signInTypo{
+    text-shadow: 1px 1px #ffd0d0;
+
+    color: #000;
+    font-weight: bold;
+}
 
 .logInMainDiv {
-    margin: 1% 0 1% 0;
+    margin: auto !important;
+    width: 45%;
+    padding: 3%;
+
+    .logInSubDiv {
+        background-color: #ffd0d0;
+        border-color:#000;
+        border-style:groove;
+        border-radius: 2px;
+        height: 50%;
+        padding: 2%;
+    }
 }

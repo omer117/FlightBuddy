@@ -13,13 +13,16 @@
 }
 
 .mainDivContainer {
-    margin: auto !important;
-    background-color: #8e6ed4 !important;
+    background-color: #c1ece4;
+    margin: auto;
+    padding: 3px;
+    border-radius: 20px;
+
 }
 
 .mainResultDiv {
     border-radius: 20px;
-    background: #d9d9d9;
+    background: #ffd0d0;
     margin: auto;
     padding: 2%;
     width: 73%;
@@ -37,13 +40,14 @@
             justify-content: space-around;
 
             .Duration {
-                color: #8e6ed4 !important;
-
+                text-shadow: 3px 3px #ffd0d0 !important;
+                color: #000 !important;
                 @include paragraphStyiling;
             }
 
             .flightCodes {
-                color: #8e6ed4 !important;
+                text-shadow: 3px 3px #ffd0d0 !important;
+                color: #000 !important;
                 @include paragraphStyiling;
             }
             .illustrate {
@@ -79,7 +83,8 @@
 }
 
 .airportHeader {
-    color: #8e6ed4 !important;
+    text-shadow: 1px 1px #ffd0d0 !important;
+    color: #000 !important;
     font-size: 20px;
     @include paragraphStyiling;
 }
@@ -94,12 +99,14 @@
     @include paragraphStyiling;
 }
 .timeOfDepartureDate {
-    color: #8e6ed4 !important;
+    text-shadow: 3px 3px #ffd0d0 !important;
+    color: #000 !important;
     font-size: 14px;
     @include paragraphStyiling;
 }
 .timeOfDeparture {
-    color: #8e6ed4 !important;
+    text-shadow: 3px 3px #ffd0d0 !important;
+    color: #000 !important;
     font-size: 14px;
     @include paragraphStyiling;
 }

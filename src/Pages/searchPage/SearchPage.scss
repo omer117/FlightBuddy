@@ -1,8 +1,26 @@
+@mixin subDivColours {
+    margin-top: 4%;
+    background-color: #ffd0d0;
+    padding: 3%;
+    border-color: #000;
+    border-style: groove;
+    border-radius: 2px;
+}
+
 .searchDiv {
     margin-right: 20% !important;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.countryName {
+    font-weight: bold;
+}
+
+.step1 {
+    text-align: center;
+    margin: 5% auto;
 }
 
 .textFieldStl {
@@ -12,7 +30,9 @@
 }
 
 p {
-    color: #fff;
+    text-shadow: 1px 1px #ffd0d0;
+
+    color: #000;
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
@@ -23,17 +43,34 @@ p {
 .placesSearchDiv {
     display: flex;
     flex-direction: row;
-    margin: auto;
-    width: 100%;
     margin-right: 32%;
     gap: 39%;
+
+    .userOrigin {
+        @include subDivColours;
+    }
+
+    .BuddyOrigin {
+        @include subDivColours;
+    }
+}
+.dateSearchDiv {
+    @include subDivColours;
+    padding: 5% !important;
+    width: 31vh;
+    margin-left: 51vh;
+    text-align: center;
 }
 
 .findAPlaceBtn {
+    text-shadow: 1px 1px #ffd0d0 !important;
+    border-color: #000 !important;
+    border-style: groove !important;
+    border-radius: 2px !important;
+    color: #000 !important;
     margin-top: 5% !important;
-    margin-left: 39% !important;
-    border-radius: 24px;
-    background: #7b49e6;
+    margin-left: 37% !important;
+    background-color: #c1ece4 !important;
     min-height: 48px;
     justify-content: center;
     align-items: center;
@@ -43,13 +80,10 @@ p {
     font-size: 30px;
     font-style: normal;
     font-weight: 700;
+    margin: 7% 29% -32px 37% !important;
     line-height: 16px; /* 53.333% */
     letter-spacing: 2.5px;
     text-transform: uppercase;
-}
-
-.dateSearchDiv {
-    margin-left: 60% !important;
 }
 
 .search2Div {
@@ -59,8 +93,9 @@ p {
     margin-top: 8%;
 
     h2 {
-        margin:3%;
-        color: #fff;
+        margin: 3%;
+        text-shadow: 1px 1px #ffd0d0 !important;
+        color: #000 !important;
         text-align: center;
         font-family: Inter;
         font-size: 14px;
@@ -76,11 +111,20 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    height: 36vh;
 
     .airportClass {
+        border-color: #000;
+        border-style: groove;
+        border-radius: 2px;
         width: 20%;
         height: 40%;
         padding: 2%;
-        background-color: #dad7d5;
+        background-color: #ffd0d0;
+        margin: 3%;
     }
+}
+
+.inputClass {
+    background-color: #c1ece4;
 }

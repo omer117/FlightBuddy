@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ResultComponent from "../../components/ResultComponent/resultComponent";
 import airplane from "../../assets/images/airplane-travel-svgrepo-com 2.svg";
-import { Button } from "@mui/material";
 
 export default function ResultPage(props) {
   const { Orig } = useParams();
@@ -30,9 +29,7 @@ export default function ResultPage(props) {
   // A mapped array that returns a list of JSX objects that contain flight result data.
   useEffect(() => {
     let firstResultJSX = firstResults?.map((result) => {
-      return (
-        <ResultComponent resultData={result} setter={props.setter} />
-      );
+      return <ResultComponent resultData={result} setter={props.setter} />;
     });
     setFirstResultsJsx(firstResultJSX);
   }, [firstResults]);
@@ -43,11 +40,13 @@ export default function ResultPage(props) {
       <div className="mainDivContainer">
         {firstResultsJsx?.length > 0 ? (
           <div>
-            <h2>Thats what we found for you</h2>
+            <h2>Step 3: Choose your flights!</h2>
             {firstResultsJsx}
-            <Link to={`/nextResult/${Orig}`}>
-              Lets find a flight for your buddy
-            </Link>
+            <div className="link">
+              <Link className="nextLink" to={`/nextResult/${Orig}`}>
+                Lets find a flight for your buddy
+              </Link>
+            </div>
           </div>
         ) : (
           <></>

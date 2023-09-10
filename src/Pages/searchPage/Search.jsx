@@ -22,6 +22,7 @@ export default function SearchPage(props) {
     console.log(listOfAirports);
     return (
       <Autocomplete
+      className="inputClass"
         disablePortal={true}
         autoHighlight
         id="combo-box-demo"
@@ -130,11 +131,11 @@ export default function SearchPage(props) {
   let chosenList = listOfAirportAlgoData?.map((airport) => {
     return (
       <div className="airportClass">
-        <Link to={`result/${airport.Orig}`}>
+        <div className="countryName">{airport["Country Name"]}</div>
+        <div className="code">{airport.Orig}</div>
+        <Link to={`/result/${airport.Orig}`}>
           <div className="Name">{airport.Name}</div>
         </Link>
-        <div className="code">{airport.Orig}</div>
-        <div className="countryName">{airport["Country Name"]}</div>
       </div>
     );
   });
@@ -142,12 +143,15 @@ export default function SearchPage(props) {
   return (
     <>
       <div className="mainDiv">
+        <div className="step1">
+          <h2>Step 1: where both of you come from?</h2>
+        </div>
         <div className="searchDiv">
           <form onSubmit={onFormSubmit} id="findAirportForm">
             <div className="placesSearchDiv">
               <div className="userOrigin">
                 <p>I'm coming from</p>
-                <ComboBox htmlFor="airport1" name="airport1" />
+                <ComboBox  htmlFor="airport1" name="airport1" />
               </div>
               <div className="BuddyOrigin">
                 <p>My buddy comes from</p>
@@ -172,7 +176,8 @@ export default function SearchPage(props) {
         <div className="search2Div">
           {chosenList.length > 0 ? (
             <div>
-              <h2>This is what our algorhithem found for you</h2>
+              <h1>Step 2: Choose where do you want to meet?</h1>
+              <h2>This is the best places we found for you!</h2>
               <div className="airportsList">{chosenList}</div>
               <h2>Choose one and see your price options</h2>
             </div>

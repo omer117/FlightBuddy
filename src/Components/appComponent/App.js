@@ -8,6 +8,8 @@ import ResultPage from '../../Pages/resultPage/ResultPage';
 import NextResultPage from '../../Pages/nextResultPage/nestResultPage';
 import LastResultPage from '../../Pages/lastResultsPage/lastResultPage';
 import NavbarComponent from '../navBarComponent/navBarComponent';
+import airplane from "../../assets/images/airplane-travel-svgrepo-com 2.svg";
+
 
 
 export function App() {
@@ -27,16 +29,19 @@ export function App() {
 
   return (
     <>
-    <NavbarComponent/>
+      <NavbarComponent />
+      <img src={airplane} className="airplane1" alt="airplane" />
       <Routes>
         <Route path="/nextResult/:Orig" element={<NextResultPage setter={setSecondChosenFlightDataList} data={chosenAirportsDataList} />} />
         <Route path="/lastResult" element={<LastResultPage data={chosenFlight} />} />
         <Route path="/Register" element={<RegisterPage />} />
-        <Route path="/LogIn" element={<LogInPage />} />
+        <Route path="/" element={<LogInPage />} />
         <Route path="/result/:Orig" element=
           {<ResultPage data={chosenAirportsDataList} setter={setFirstChosenFlightDataList} />} />
-        <Route path="/" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
+        <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
       </Routes>
+      <img src={airplane} className="airplane2" alt="airplane" />
+
     </>
   );
 }

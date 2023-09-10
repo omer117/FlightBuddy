@@ -31,133 +31,110 @@ const handleSubmit = (event) => {
 export default function LogInPage() {
   return (
     <>
-      <ThemeProvider theme={defaultTheme}>
+      <div className="LetsStartDiv">
+        <p className="paragClass">
+          Let's find you and your buddy A place to meet!
+        </p>
+        <p className="paragClass">In just 3 steps!</p>
+      </div>
+      <div className="logInMainDiv">
+        <CssBaseline />
         <Grid
-          container
-          component="main"
-          className="logInMainDiv"
-          sx={{ height: "100vh" }}
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
+          className="logInSubDiv"
         >
-          <CssBaseline />
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
+          <Box
             sx={{
-              backgroundImage:
-                "url(https://www.nerdwallet.com/assets/blog/wp-content/uploads/2021/04/GettyImages-172672886-1440x864.jpg)",
-              backgroundRepeat: "no-repeat",
-              backgroundColor: (t) => t.palette.mode === "light",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
-          />
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            component={Paper}
-            elevation={6}
-            square
           >
+            <Typography className="signInTypo" component="h1" variant="h5">
+              Sign in
+            </Typography>
             <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 1 }}
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                htmlFor="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                htmlFor="password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, backgroundColor: "#7B49E6" }}
               >
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  htmlFor="email"
-                  autoFocus
-                />
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  htmlFor="password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
+                Sign In
+              </Button>
+              <Grid className="thirdParty" sx={{ mt: 1, mb: 1 }}>
+                <Button type="submit" variant="contained" className="googleBtn">
+                  <img src={googleIcon} alt="" />
+                </Button>
                 <Button
                   type="submit"
-                  fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2, backgroundColor: "#7B49E6" }}
+                  className="facebookBtn"
                 >
-                  Sign In
+                  <img src={facebookIcon} alt="" />
                 </Button>
-                <Grid className="thirdParty" sx={{ mt: 1, mb: 1 }}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    className="googleBtn"
-                  >
-                    <img src={googleIcon} alt="" />
-                  </Button>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    className="facebookBtn"
-                  >
-                    <img src={facebookIcon} alt="" />
-                  </Button>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    className="appleBtn"
-                  >
-                    <img src={appleIcon} alt="" />
-                  </Button>
+                <Button type="submit" variant="contained" className="appleBtn">
+                  <img src={appleIcon} alt="" />
+                </Button>
+              </Grid>
+              <Grid container className="divContainerLinks">
+                <Grid item xs>
+                  <Link href="/register" variant="body2">
+                    Forgot password?
+                  </Link>
                 </Grid>
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="/register" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
-                  <Grid item>
-                    <Link to="/Register" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
-                  </Grid>
+                <Grid item>
+                  <Link to="/Register" variant="body2">
+                    Sign Up
+                  </Link>
                 </Grid>
-                <Link to="/Search">Skip</Link>
-              </Box>
+              </Grid>
+              <div className="toSearchLink">
+                <Link to="/Search">Continue as guest</Link>
+              </div>
             </Box>
-          </Grid>
+          </Box>
         </Grid>
-      </ThemeProvider>
+      </div>
     </>
   );
 }
