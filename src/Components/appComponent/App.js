@@ -5,11 +5,10 @@ import SearchPage from '../../Pages/searchPage/Search';
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import ResultPage from '../../Pages/resultPage/ResultPage';
-import NextResultPage from '../../Pages/nextResultPage/nestResultPage';
 import LastResultPage from '../../Pages/lastResultsPage/lastResultPage';
 import NavbarComponent from '../navBarComponent/navBarComponent';
 import airplane from "../../assets/images/airplane-travel-svgrepo-com 2.svg";
-
+import MyFlightPage from '../../Pages/myFlightPage/myFlightPage';
 
 
 export function App() {
@@ -20,7 +19,13 @@ export function App() {
   const [secondChosenAirportsDataList, setSecondChosenFlightDataList] =
     useState({});
   const [chosenFlight, setChosenFlight] = useState([])
+  const [user, setUser] = useState('')
+  console.log(firstChosenAirportsDataList);
+  console.log(secondChosenAirportsDataList);
 
+  useEffect(() => {
+    window.addEventListener("beforeunload", (localStorage.clear()));
+  }, [])
 
   useEffect(() => {
     let arr = [firstChosenAirportsDataList, secondChosenAirportsDataList]
@@ -29,15 +34,22 @@ export function App() {
 
   return (
     <>
-      <NavbarComponent />
+      <NavbarComponent user={user} />
       <img src={airplane} className="airplane1" alt="airplane" />
       <Routes>
-        <Route path="/nextResult/:Orig" element={<NextResultPage setter={setSecondChosenFlightDataList} data={chosenAirportsDataList} />} />
-        <Route path="/lastResult" element={<LastResultPage data={chosenFlight} />} />
-        <Route path="/Register" element={<RegisterPage />} />
-        <Route path="/" element={<LogInPage />} />
-        <Route path="/result/:Orig" element=
-          {<ResultPage data={chosenAirportsDataList} setter={setFirstChosenFlightDataList} />} />
+        <Route path="/lastResult" element={<LastResultPage user={user} data={chosenFlight} />} />
+        <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
+        <Route path="/" element={<LogInPage userSetter={setUser} />} />
+        <Route path="/myFlights" element={<MyFlightPage />} />
+        <Route path="/result/:Orig"
+          element=
+          {<ResultPage data={chosenAirportsDataList}
+            setter1={setFirstChosenFlightDataList}
+            setter2={setSecondChosenFlightDataList}
+            afterSetter1={firstChosenAirportsDataList}
+            afterSetter2={firstChosenAirportsDataList}
+          />}
+        />
         <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
       </Routes>
       <img src={airplane} className="airplane2" alt="airplane" />

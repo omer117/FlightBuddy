@@ -1,3 +1,28 @@
 .navBarMainDiv {
     background-color: #14589b !important;
 }
+
+.navBarLink {
+    display: flex;
+    flex-direction: row;
+    gap: 9%;
+}
+
+.demiOParag {
+    color: #ffd0d0;
+    margin: 2px;
+}
+
+.demiParag {
+    text-shadow: 1px 1px #ffd0d0;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+
+    margin: auto;
+    margin-left: auto;
+    color: #fff;
+}

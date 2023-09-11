@@ -3,14 +3,19 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 7% !important;
+    display: none;
 }
 
+.logInBtn {
+    background-color: #c1ece4 !important;
+    color: #000 !important;
+}
 .LetsStartDiv {
-    margin-top: 7%;
+    margin-top: 2%;
     margin-bottom: 3%;
     .paragClass {
         text-shadow: 1px 1px #ffd0d0;
-        font-size:x-large;
+        font-size: x-large;
         color: #000;
         font-weight: bold;
         text-align: center;
@@ -28,26 +33,28 @@
 }
 
 .toSearchLink {
+    
     a {
         text-decoration: none;
     }
-    margin: 9% 36% -32px 34%;
+    margin: 9% -5% -32px 33%;
 }
 
 .divContainerLinks {
-
     height: 3vh;
     margin-bottom: 2%;
     a {
+        text-shadow: 1px 1px #ffd0d0;
         text-decoration: none !important;
         text-align: center;
+        color: #000;
     }
 }
 .appleBtn {
     background: #fff !important;
     width: 25%;
 }
-.signInTypo{
+.signInTypo {
     text-shadow: 1px 1px #ffd0d0;
 
     color: #000;
@@ -61,8 +68,8 @@
 
     .logInSubDiv {
         background-color: #ffd0d0;
-        border-color:#000;
-        border-style:groove;
+        border-color: #000;
+        border-style: groove;
         border-radius: 2px;
         height: 50%;
         padding: 2%;

@@ -1,27 +1,41 @@
 import "./RegisterPage.scss";
-import Avatar from "@mui/material/Avatar";
+import axios from "axios";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-
+import { useNavigate } from "react-router-dom";
 
 // handles the submiting action of the Register Button.
-export default function RegisterPage() {
+export default function RegisterPage(props) {
+  const navi = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    let dataObject = {
+      username: data.get("username"),
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+
+    axios
+      .post("http://localhost:3004/AuthAPI/register", {
+        username: dataObject.username,
+        email: dataObject.email,
+        password: dataObject.password,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          props.userSetter(`${dataObject.username}`);
+          navi("/Search");
+        } else {
+        }
+      });
   };
 
   return (
@@ -48,10 +62,7 @@ export default function RegisterPage() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
+            <Typography className="header" component="h1" variant="h5">
               Register
             </Typography>
             <Box
@@ -93,31 +104,16 @@ export default function RegisterPage() {
                 autoComplete="current-password"
                 htmlFor="password"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: "#7B49E6" }}
+                className="registerBtn"
+                sx={{ mt: 3, mb: 2 }}
               >
                 Register
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="/register" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/Register" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Link to="/Search">Skip</Link>
+              <Link to="/Search">back to Log In</Link>
             </Box>
           </Box>
         </Grid>

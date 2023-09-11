@@ -1,15 +1,29 @@
-import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
 import "./resultComponent.scss";
-import { Navigate } from "react-router-dom";
 
 export default function ResultComponent(props) {
+  const [isActive, setActive] = useState(true);
+  const [isClicked, setClicked] = useState(false);
+
   function clickHandler() {
-    props.setter(props.resultData);
+    if (props.classData === "active") {
+      setActive(true);
+      props.setter(props.resultData);
+    }
   }
+
+  useEffect(() => {
+    if (props.classData === "active") {
+      setActive(true);
+    }
+    if (props.classData === "disabled") {
+      setActive(false);
+    }
+  }, [props.classData]);
 
   return (
     <div onClick={clickHandler} className="field">
-      <div className="mainResultDiv">
+      <div className={isActive ? "mainResultDivActive " : "mainResultDiv"}>
         <div className="infoDiv">
           <div className="arrivalInfo">
             <div className="arrivalLocation">

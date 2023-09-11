@@ -1,11 +1,51 @@
-    .nextLink{
-        text-decoration: none;
-        font-size: large;
-        font-weight: 700;
-        
-    }
+.nextLink {
+    text-decoration: none;
+    font-size: large;
+    font-weight: 700;
+    border-style: groove;
+    color: #000;
+    text-shadow: 3px 3px #ffd0d0 !important;
+    padding: 4%;
+}
 
-.airplane1{
+#nextLink {
+    text-align: center;
+    margin: auto;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    background: #ffd0d0;
+    border-color: #000;
+    border-radius: 2px;
+}
+
+.mainDivContainer {
+    background-color: #c1ece4;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+h2 {
+    text-align: center;
+}
+
+.SubContainer {
+    gap: 8%;
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+
+    .List {
+        margin-top: 0.3%;
+        width: 57%;
+        height: max-content;
+    }
+}
+
+.airplane1 {
     width: 79.99999804933762px;
     height: 62.99999846385338px;
     top: 121px;
@@ -13,7 +53,7 @@
     rotate: -35.77deg;
 }
 
-.airplane2{
+.airplane2 {
     position: absolute;
     display: block;
     width: 79.99999804933762px;
@@ -21,5 +61,4 @@
     left: 920px !important
     ;
     rotate: -205.77deg;
-    
 }

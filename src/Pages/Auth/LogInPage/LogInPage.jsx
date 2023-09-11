@@ -2,33 +2,51 @@ import "./LogInPage.scss";
 import googleIcon from "../../../assets/images/google.svg";
 import appleIcon from "../../../assets/images/apple.svg";
 import facebookIcon from "../../../assets/images/facebook.svg";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import axios from 'axios';
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const defaultTheme = createTheme();
 
 // handles the submiting action of the log In Button.
-const handleSubmit = (event) => {
-  event.preventDefault();
-  const data = new FormData(event.currentTarget);
-  console.log({
-    email: data.get("email"),
-    password: data.get("password"),
-  });
-};
 
-export default function LogInPage() {
+
+export default function LogInPage(props) {
+  const [token, setToken] = useState("");
+  
+const navi = useNavigate()
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    let dataObj = {
+      username: data.get("username"),
+      password: data.get("password"),
+    };
+  
+    axios.post('http://localhost:3004/AuthAPI/login',{
+      username:dataObj.username,
+      password:dataObj.password
+    }).then((response)=>{
+      if(response.status===200){
+        setToken(response.data.token)
+        props.userSetter(dataObj.username)
+        localStorage.setItem('token', JSON.stringify(response.data.token))
+        localStorage.setItem('user_id', JSON.stringify(response.data.user_id))
+        navi('/Search')
+      }else{
+       alert('user not found');
+      }
+    })
+  
+  };
   return (
     <>
       <div className="LetsStartDiv">
@@ -71,11 +89,11 @@ export default function LogInPage() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                htmlFor="email"
+                id="username"
+                label="username"
+                name="username"
+                autoComplete="username"
+                htmlFor="username"
                 autoFocus
               />
               <TextField
@@ -89,15 +107,16 @@ export default function LogInPage() {
                 autoComplete="current-password"
                 htmlFor="password"
               />
-              <FormControlLabel
+              {/* <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2, backgroundColor: "#7B49E6" }}
+                className="logInBtn"
+                sx={{ mt: 3, mb: 2 }}
               >
                 Sign In
               </Button>

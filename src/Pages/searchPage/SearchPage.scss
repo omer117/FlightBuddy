@@ -109,9 +109,9 @@ p {
 
 .airportsList {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
-    height: 36vh;
+    height: fit-content;
 
     .airportClass {
         border-color: #000;

@@ -8,27 +8,75 @@
     text-transform: uppercase;
 }
 
-.field {
-    margin: 2%;
-}
-
-.mainDivContainer {
-    background-color: #c1ece4;
-    margin: auto;
-    padding: 3px;
-    border-radius: 20px;
-
-}
-
 .mainResultDiv {
-    border-radius: 20px;
+    border-color: #000;
+    border-style: groove;
+    border-radius: 2px;
     background: #ffd0d0;
-    margin: auto;
+    margin: 10% auto;
+
     padding: 2%;
-    width: 73%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
+    .infoDiv {
+        display: flex;
 
+        .midInfoDiv {
+            padding: 3% 2%;
+            margin-top: 2%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .Duration {
+                text-shadow: 3px 3px #ffd0d0 !important;
+                color: #000 !important;
+                @include paragraphStyiling;
+            }
+
+            .flightCodes {
+                text-shadow: 3px 3px #ffd0d0 !important;
+                color: #000 !important;
+                @include paragraphStyiling;
+            }
+            .illustrate {
+                @include paragraphStyiling;
+            }
+            .stopsInfo {
+                @include paragraphStyiling;
+            }
+        }
+
+        div {
+            text-align: center;
+        }
+    }
+}
+
+.mainResultDivActive {
+    &.selected {
+        background: #92bd60; // Green background color when selected
+    }
+
+    
+    border-color: #000;
+    border-style: groove;
+    border-radius: 2px;
+    background: #ffd0d0;
+    margin: 10% auto;
+
+    padding: 2%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    &:hover {
+        width: 90%;
+        height: 140% !important;
+    }
+    &:active {
+        background-color: #92bd60;
+    }
     .infoDiv {
         display: flex;
 
@@ -71,6 +119,7 @@
     margin-bottom: 0;
     margin-left: 74%;
     width: fit-content;
+    height: 30vh;
     padding: 0.7%;
     background-color: rgb(12, 204, 12);
     .header {

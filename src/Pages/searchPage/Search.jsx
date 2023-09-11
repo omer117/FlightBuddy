@@ -22,7 +22,7 @@ export default function SearchPage(props) {
     console.log(listOfAirports);
     return (
       <Autocomplete
-      className="inputClass"
+        className="inputClass"
         disablePortal={true}
         autoHighlight
         id="combo-box-demo"
@@ -91,6 +91,8 @@ export default function SearchPage(props) {
     }
     setChosenData([airport1, airport2, realFormData.dateOfFlight]);
     props.setterFunction([airport1, airport2, realFormData.dateOfFlight]);
+    localStorage.setItem('firstFlight',airport1);
+    localStorage.setItem('secondFlight',airport2);
   };
 
   useEffect(() => {
@@ -113,14 +115,16 @@ export default function SearchPage(props) {
     // Gets the data of the algo-chosen airports
     async function setter() {
       let tempArr = [];
-      for (let i = 0; i < listOfAirports.length; i++) {
-        await axios
-          .post("http://localhost:3004/flightsAPI/getChosenAirportData", {
-            targetAirport: listOfAirports[i].arr_code,
-          })
-          .then((response) => {
-            tempArr.push(response.data);
-          });
+      if (listOfAirports[0] !== null) {
+        for (let i = 0; i < listOfAirports.length; i++) {
+          await axios
+            .post("http://localhost:3004/flightsAPI/getChosenAirportData", {
+              targetAirport: listOfAirports[i].arr_code,
+            })
+            .then((response) => {
+              tempArr.push(response.data);
+            });
+        }
       }
       setListOfAirportAlgoData(tempArr);
     }
@@ -151,7 +155,7 @@ export default function SearchPage(props) {
             <div className="placesSearchDiv">
               <div className="userOrigin">
                 <p>I'm coming from</p>
-                <ComboBox  htmlFor="airport1" name="airport1" />
+                <ComboBox htmlFor="airport1" name="airport1" />
               </div>
               <div className="BuddyOrigin">
                 <p>My buddy comes from</p>
