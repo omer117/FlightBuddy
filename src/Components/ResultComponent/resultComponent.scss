@@ -1,10 +1,10 @@
-@mixin paragraphStyiling {
+@mixin paragraphStyling {
     color: #000;
     font-family: Inter;
     font-style: normal;
-    font-weight: 700;
-    line-height: 16px; /* 64% */
-    letter-spacing: 2.5px;
+    font-weight: 600; // Adjusted font-weight
+    line-height: 14px; // Reduced line-height
+    letter-spacing: 1.5px; // Reduced letter-spacing
     text-transform: uppercase;
 }
 
@@ -13,38 +13,30 @@
     border-style: groove;
     border-radius: 2px;
     background: #ffd0d0;
-    margin: 10% auto;
+    margin: 5% auto; // Adjusted margin
 
-    padding: 2%;
-    width: fit-content;
+    padding: 1%; // Adjusted padding
+    width: 80%; // Adjusted width
     display: flex;
     flex-direction: column;
+    
     .infoDiv {
         display: flex;
 
         .midInfoDiv {
-            padding: 3% 2%;
-            margin-top: 2%;
+            padding: 2% 1%; // Adjusted padding
+            margin-top: 1%; // Adjusted margin
             display: flex;
             flex-direction: column;
             justify-content: space-around;
 
-            .Duration {
-                text-shadow: 3px 3px #ffd0d0 !important;
+            .Duration, .flightCodes, .illustrate, .stopsInfo {
+                text-shadow: 2px 2px #ffd0d0 !important; // Adjusted shadow
                 color: #000 !important;
-                @include paragraphStyiling;
-            }
-
-            .flightCodes {
-                text-shadow: 3px 3px #ffd0d0 !important;
-                color: #000 !important;
-                @include paragraphStyiling;
-            }
-            .illustrate {
-                @include paragraphStyiling;
-            }
-            .stopsInfo {
-                @include paragraphStyiling;
+                @include paragraphStyling;
+                font-size: 12px; // Smaller font size
+                line-height: 12px; // Smaller line-height
+                letter-spacing: 1px; // Smaller letter-spacing
             }
         }
 
@@ -59,50 +51,43 @@
         background: #92bd60; // Green background color when selected
     }
 
-    
     border-color: #000;
     border-style: groove;
     border-radius: 2px;
     background: #ffd0d0;
-    margin: 10% auto;
+    margin: 5% auto; // Adjusted margin
 
-    padding: 2%;
-    width: fit-content;
+    padding: 1%; // Adjusted padding
+    width: 80%; // Adjusted width
     display: flex;
     flex-direction: column;
+
     &:hover {
         width: 90%;
-        height: 140% !important;
+        height: 110% !important; // Adjusted height
     }
+
     &:active {
         background-color: #92bd60;
     }
+
     .infoDiv {
         display: flex;
 
         .midInfoDiv {
-            padding: 3% 2%;
-            margin-top: 2%;
+            padding: 2% 1%; // Adjusted padding
+            margin-top: 1%; // Adjusted margin
             display: flex;
             flex-direction: column;
             justify-content: space-around;
 
-            .Duration {
-                text-shadow: 3px 3px #ffd0d0 !important;
+            .Duration, .flightCodes, .illustrate, .stopsInfo {
+                text-shadow: 2px 2px #ffd0d0 !important; // Adjusted shadow
                 color: #000 !important;
-                @include paragraphStyiling;
-            }
-
-            .flightCodes {
-                text-shadow: 3px 3px #ffd0d0 !important;
-                color: #000 !important;
-                @include paragraphStyiling;
-            }
-            .illustrate {
-                @include paragraphStyiling;
-            }
-            .stopsInfo {
-                @include paragraphStyiling;
+                @include paragraphStyling;
+                font-size: 12px; // Smaller font size
+                line-height: 12px; // Smaller line-height
+                letter-spacing: 1px; // Smaller letter-spacing
             }
         }
 
@@ -117,11 +102,11 @@
     border-radius: 5px;
     flex-direction: column;
     margin-bottom: 0;
-    margin-left: 74%;
-    width: fit-content;
-    height: 30vh;
-    padding: 0.7%;
+    margin-left: 5%; // Adjusted margin for responsiveness
+    width: 90%; // Adjusted width
+    padding: 0.7%; // Adjusted padding
     background-color: rgb(12, 204, 12);
+
     .header {
         display: flex;
     }
@@ -131,31 +116,20 @@
     }
 }
 
-.airportHeader {
+.airportHeader, .airportName, .airportCountry, .timeOfDepartureDate, .timeOfDeparture {
     text-shadow: 1px 1px #ffd0d0 !important;
     color: #000 !important;
-    font-size: 20px;
-    @include paragraphStyiling;
+    font-size: 14px; // Smaller font size
+    @include paragraphStyling;
 }
 
-.airportName {
-    font-size: 14px;
-    @include paragraphStyiling;
-}
+// Media queries for responsiveness
+@media screen and (max-width: 768px) {
+    .mainResultDiv, .mainResultDivActive {
+        width: 95%; // Adjusted width for smaller screens
+    }
 
-.airportCountry {
-    font-size: 14px;
-    @include paragraphStyiling;
-}
-.timeOfDepartureDate {
-    text-shadow: 3px 3px #ffd0d0 !important;
-    color: #000 !important;
-    font-size: 14px;
-    @include paragraphStyiling;
-}
-.timeOfDeparture {
-    text-shadow: 3px 3px #ffd0d0 !important;
-    color: #000 !important;
-    font-size: 14px;
-    @include paragraphStyiling;
+    .pricingDiv {
+        margin-left: 3%; // Further adjusted margin
+    }
 }

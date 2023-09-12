@@ -9,7 +9,7 @@ import LastResultPage from '../../Pages/lastResultsPage/lastResultPage';
 import NavbarComponent from '../navBarComponent/navBarComponent';
 import airplane from "../../assets/images/airplane-travel-svgrepo-com 2.svg";
 import MyFlightPage from '../../Pages/myFlightPage/myFlightPage';
-
+import NextFlightPage from '../../Pages/nextFlightPage/NextFlightPage';
 
 export function App() {
   const [chosenAirportsDataList, setChosenAirportsDataList] = useState([]);
@@ -41,6 +41,7 @@ export function App() {
         <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
         <Route path="/" element={<LogInPage userSetter={setUser} />} />
         <Route path="/myFlights" element={<MyFlightPage />} />
+        <Route path="/nextFlight:Orig" element={<MyFlightPage />} />
         <Route path="/result/:Orig"
           element=
           {<ResultPage data={chosenAirportsDataList}

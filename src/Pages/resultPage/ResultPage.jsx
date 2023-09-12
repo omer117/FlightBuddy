@@ -18,7 +18,7 @@ export default function ResultPage(props) {
   useEffect(() => {
     async function OrigSetter(from, to) {
       axios
-        .post("http://localhost:3004/flightsAPI/getChosenAirportsFlights", {
+        .post("https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportsFlights", {
           airportFrom: from,
           airportTarget: to,
         })
@@ -33,7 +33,7 @@ export default function ResultPage(props) {
   useEffect(() => {
     async function OrigSetter(from, to) {
       axios
-        .post("http://localhost:3004/flightsAPI/getChosenAirportsFlights", {
+        .post("https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportsFlights", {
           airportFrom: from,
           airportTarget: to,
         })
@@ -44,25 +44,6 @@ export default function ResultPage(props) {
     OrigSetter(localStorage.getItem("secondFlight"), Orig); // to be erased before prod
     // OrigSetter(props.data[1], Orig);
   }, [Orig]);
-
-  // A mapped array that returns a list of JSX objects that contain flight result data.
-  useEffect(() => {
-    let firstResultJSX = firstResults?.map((result, index) => {
-      return (
-        <ResultComponent
-          key={index}
-          idScssData={
-            selectedElementIndex === "index" ? "active selected" : "active"
-          }
-          onClickFunc={setSelectedElementIndex(index)}
-          classData={"active"}
-          resultData={result}
-          setter={props.setter1}
-        />
-      );
-    });
-    setFirstResultsJsx(firstResultJSX);
-  }, [firstResults]);
 
   useEffect(() => {
     let secondResultsJSX = secondResults?.map((result, index) => {
@@ -83,6 +64,25 @@ export default function ResultPage(props) {
     });
     setSecondResultjsx(secondResultsJSX);
   }, [props.setter, props.setter2, secondResults, selectedElementIndex]);
+  // A mapped array that returns a list of JSX objects that contain flight result data.
+  useEffect(() => {
+    let firstResultJSX = firstResults?.map((result, index) => {
+      return (
+        <ResultComponent
+          key={index}
+          idScssData={
+            selectedElementIndex === "index" ? "active selected" : "active"
+          }
+          onClickFunc={setSelectedElementIndex(index)}
+          classData={"active"}
+          resultData={result}
+          setter={props.setter1}
+        />
+      );
+    });
+    setFirstResultsJsx(firstResultJSX);
+  }, [firstResults]);
+
 
   return (
     <>
@@ -95,8 +95,8 @@ export default function ResultPage(props) {
               <div className="List">{secondResultsJsx}</div>
             </div>
             <div id="nextLink">
-              <Link className="nextLink" to={`/lastResult`}>
-                Let's sum it up
+              <Link className="nextLink" to={`/nextFlight/${Orig}`}>
+                Let's find your buddy a flight
               </Link>
             </div>
           </div>

@@ -6,6 +6,11 @@
     border-color: #000 !important;
     border-style: groove;
     border-radius: 2px;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding: 1%;
+    }
 }
 
 h1 {
@@ -13,6 +18,10 @@ h1 {
     text-decoration: none !important;
     text-align: center;
     color: #000;
+
+    @media screen and (max-width: 768px) {
+        font-size: 24px;
+    }
 }
 
 .SaveBtn {
@@ -21,11 +30,20 @@ h1 {
     text-align: center;
     background-color: #c1ece4 !important;
     color: #000 !important;
+
+    @media screen and (max-width: 768px) {
+        font-size: 16px;
+    }
 }
+
 .btnDiv {
     margin: 5% auto;
     width: fit-content;
     border-color: #000 !important;
     border-style: groove;
     border-radius: 2px;
+
+    @media screen and (max-width: 768px) {
+        margin: 2% auto;
+    }
 }

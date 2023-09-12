@@ -15,6 +15,7 @@
     width: fit-content;
     display: flex;
     justify-content: center;
+    align-items: center;
     background: #ffd0d0;
     border-color: #000;
     border-radius: 2px;
@@ -26,6 +27,9 @@
     padding: 10px;
     border-radius: 20px;
     width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h2 {
@@ -58,7 +62,28 @@ h2 {
     display: block;
     width: 79.99999804933762px;
     height: 62.99999846385338px;
-    left: 920px !important
-    ;
+    left: 920px !important;
     rotate: -205.77deg;
+}
+
+// Media queries for responsiveness
+@media screen and (max-width: 768px) {
+    .mainDivContainer {
+        width: 100%;
+        padding: 5px;
+    }
+    
+    .SubContainer {
+        flex-direction: column;
+    }
+    
+    .List {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nextLink {
+        font-size: medium;
+    }
 }

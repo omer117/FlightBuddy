@@ -46,7 +46,7 @@ export default function SearchPage(props) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3004/flightsAPI/getAirports")
+      .get("https://flightbuddyserver.onrender.com/flightsAPI/getAirports")
       .then((response) => {
         let data = response.data.airports;
         let newAirportsArr = [];
@@ -91,8 +91,8 @@ export default function SearchPage(props) {
     }
     setChosenData([airport1, airport2, realFormData.dateOfFlight]);
     props.setterFunction([airport1, airport2, realFormData.dateOfFlight]);
-    localStorage.setItem('firstFlight',airport1);
-    localStorage.setItem('secondFlight',airport2);
+    localStorage.setItem("firstFlight", airport1);
+    localStorage.setItem("secondFlight", airport2);
   };
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export default function SearchPage(props) {
     // using a function because you cannot async a useEffect function callback in react
     async function setter() {
       await axios
-        .post("http://localhost:3004/flightsAPI/useAirportAlgo", {
+        .post("https://flightbuddyserver.onrender.com/flightsAPI/useAirportAlgo", {
           firstAirport: chosenData[0],
           secondAirport: chosenData[1],
         })
@@ -118,7 +118,7 @@ export default function SearchPage(props) {
       if (listOfAirports[0] !== null) {
         for (let i = 0; i < listOfAirports.length; i++) {
           await axios
-            .post("http://localhost:3004/flightsAPI/getChosenAirportData", {
+            .post("https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportData", {
               targetAirport: listOfAirports[i].arr_code,
             })
             .then((response) => {
@@ -168,28 +168,28 @@ export default function SearchPage(props) {
             </div>
           </form>
         </div>
-        <Button
-          className="findAPlaceBtn"
-          variant="contained"
-          type="submit"
-          form="findAirportForm"
-          value="Submit"
-        >
-          Find us a place to meet at !
-        </Button>
-        <div className="search2Div">
-          {chosenList.length > 0 ? (
-            <div>
-              <h1>Step 2: Choose where do you want to meet?</h1>
-              <h2>This is the best places we found for you!</h2>
-              <div className="airportsList">{chosenList}</div>
-              <h2>Choose one and see your price options</h2>
-            </div>
-          ) : (
-            <></>
-          )}
+        <div className="findAPlaceBtnDiv">
+          <Button
+            className="findAPlaceBtn"
+            variant="contained"
+            type="submit"
+            form="findAirportForm"
+            value="Submit"
+          >
+            Find us a place to meet at !
+          </Button>
         </div>
       </div>
+      {chosenList.length > 0 ? (
+        <div className="search2Div">
+          <h1>Step 2: Choose where do you want to meet?</h1>
+          <h2>This is the best places we found for you!</h2>
+          <div className="airportsList">{chosenList}</div>
+          <h2>Choose one and see your price options</h2>
+        </div>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

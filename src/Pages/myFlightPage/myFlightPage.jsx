@@ -10,7 +10,7 @@ export default function MyFlightPage(props) {
   useState(() => {
     function setter() {
       axios
-        .post("http://localhost:3004/AuthAPI/findUserFlightById", {
+        .post("https://flightbuddyserver.onrender.com/AuthAPI/findUserFlightById", {
           user_id: `${JSON.parse(localStorage.getItem("user_id"))}`,
         })
         .then((response) => {

@@ -31,7 +31,7 @@ const navi = useNavigate()
       password: data.get("password"),
     };
   
-    axios.post('http://localhost:3004/AuthAPI/login',{
+    axios.post('https://flightbuddyserver.onrender.com/AuthAPI/login',{
       username:dataObj.username,
       password:dataObj.password
     }).then((response)=>{

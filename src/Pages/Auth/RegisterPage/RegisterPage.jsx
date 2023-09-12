@@ -24,7 +24,7 @@ export default function RegisterPage(props) {
     };
 
     axios
-      .post("http://localhost:3004/AuthAPI/register", {
+      .post("https://flightbuddyserver.onrender.com/AuthAPI/register", {
         username: dataObject.username,
         email: dataObject.email,
         password: dataObject.password,
