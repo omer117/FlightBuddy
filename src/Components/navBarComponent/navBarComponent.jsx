@@ -7,11 +7,13 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import MenuIcon from "@mui/icons-material/Menu"; // Add MenuIcon
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function NavbarComponent(props) {
   const navi = useNavigate();
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   function navigate() {
     navi("/myFlights");
@@ -27,41 +29,47 @@ export default function NavbarComponent(props) {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={() => setMenuOpen(!menuOpen)} // Toggle menu on icon click
           >
-            <FlightTakeoffIcon />
+            {menuOpen ? <MenuIcon /> : <FlightTakeoffIcon />}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             FlightBuddy
           </Typography>
           {props.user ? (
-            <div className="navBarLink">
-              <div>
-                <Link to="/myFlights" className="demiParag">
-                  My Flights
-                </Link>
-              </div>
-              <div></div>
-              <div>
-                <p className="demiParag">
-                  Hello, <p className="demiOParag">{props.user}</p>
-                </p>
-              </div>
-              <div>
-                <p
-                  className="demiParag"
+            <div className={menuOpen ? "navBarLink mobile" : "navBarLink"}>
+              {menuOpen ? (
+                <>
+                  <Link to="/myFlights" className="demiParag">
+                    My Flights
+                  </Link>
+                  <p className="demiParag">
+                    Hello, <span className="demiOParag">{props.user}</span>
+                  </p>
+                  <p
+                    className="demiParag"
+                    onClick={() => {
+                      navi("/Search");
+                      window.location.reload(false);
+                    }}
+                  >
+                    Log out
+                  </p>
+                </>
+              ) : (
+                <Button
                   onClick={() => {
-                    navi("/Search");
-                    window.location.reload(false);
+                    navi("/myFlights");
                   }}
+                  color="inherit"
                 >
-                  Log out
-                </p>
-              </div>
+                  My Flights
+                </Button>
+              )}
             </div>
           ) : (
             <Button
               onClick={() => {
-                // eslint-disable-next-line no-restricted-globals
                 navi("/");
               }}
               color="inherit"
