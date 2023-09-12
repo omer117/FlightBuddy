@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# FlightBuddy
+## _Connecting people around the world_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Let's say you live in Israel, And your friend John lives in the UK.
+You try to find a nice place in the middle, 
+And _FlightBuddy_ is here to help you both.
 
-## Available Scripts
+ 
+_FlightBuddy_ is a smart flight search website, that lets you insert your selected airports, The output is 5 airports you can choose from to meet in the middle, and we are thinking about your time of course!
+choose the airport you want and choose the flights for both of you, this is that easy.  
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Why did you choose to build FlightBuddy?
+I developed the function of finding the place in the middle because in 2021 I had to break my head about where to meet my good friend, I lived in Israel and she was in Thailand and it was complicated, but in the end, we agreed on Dubai!
+But apparently, the process was easier with FlightBuddy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Who are you?
+> My name is Omar Asraf, I am a full-stack programmer full of ambition and hunger to develop, personally and professionally.
+I developed Shaka out of my love for programming and surfing, and I'm more than happy that I was able to express it in a great way with the tools I learned.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-------
+## Tech
 
-### `npm run eject`
+### Front End
+- JS 
+- ReactJs And MUI
+- Node.js
+- SCSS/CSS
+- render
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Back End
+- TS
+- MongoDB
+- jwt
+- Express.js
+- render
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## starting 
+```sh
+npm ci 
+npm start
+```
 
-## Learn More
+## building
+```sh
+npm install -g serve
+npm run build
+cd build
+serve -s build
+```
+_______________________________________________________
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Link to [flightBuddy](not yes) 
+### Link to [Design Docs](not yet)
+_______________________________________________________
+## Contact me
+- [LinkedIn](https://www.linkedin.com/in/omer-asraf/)
+- [Github](https://github.com/omer117)
+- gmail: omerasraf91@gmail.com
