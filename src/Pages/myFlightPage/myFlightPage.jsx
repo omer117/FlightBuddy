@@ -10,9 +10,12 @@ export default function MyFlightPage(props) {
   useState(() => {
     function setter() {
       axios
-        .post("https://flightbuddyserver.onrender.com/AuthAPI/findUserFlightById", {
-          user_id: `${JSON.parse(localStorage.getItem("user_id"))}`,
-        })
+        .post(
+          "https://flightbuddyserver.onrender.com/AuthAPI/findUserFlightById",
+          {
+            user_id: `${JSON.parse(localStorage.getItem("user_id"))}`,
+          }
+        )
         .then((response) => {
           setUserFlights(response.data);
         })
@@ -28,15 +31,18 @@ export default function MyFlightPage(props) {
   });
 
   return (
-    <div>
-      {chosenFlightsJSX !== undefined ? (
+    <div className="mainDivContainer">
+      {chosenFlightsJSX !== undefined  ? (
         <div>
           <h1>The flights you choosed:</h1>
-          {chosenFlightsJSX}
+          <div className="SubContainer">
+            <div className="List">{chosenFlightsJSX}</div>
+          </div>
         </div>
       ) : (
         <h1>you did not choosed flights yet!</h1>
       )}
     </div>
+
   );
 }

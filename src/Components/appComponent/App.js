@@ -41,7 +41,7 @@ export function App() {
         <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
         <Route path="/" element={<LogInPage userSetter={setUser} />} />
         <Route path="/myFlights" element={<MyFlightPage />} />
-        <Route path="/nextFlight:Orig" element={<MyFlightPage />} />
+        <Route path="/nextFlight/:Orig" element={<NextFlightPage />} />
         <Route path="/result/:Orig"
           element=
           {<ResultPage data={chosenAirportsDataList}

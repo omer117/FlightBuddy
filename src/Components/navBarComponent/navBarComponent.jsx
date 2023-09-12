@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 export default function NavbarComponent(props) {
   const navi = useNavigate();
 
-  function navigate(){
-    navi('/myFlights')
+  function navigate() {
+    navi("/myFlights");
   }
 
   return (
@@ -36,7 +36,9 @@ export default function NavbarComponent(props) {
           {props.user ? (
             <div className="navBarLink">
               <div>
-                <Link to='/myFlights' className="demiParag">My Flights</Link>
+                <Link to="/myFlights" className="demiParag">
+                  My Flights
+                </Link>
               </div>
               <div></div>
               <div>
@@ -45,13 +47,27 @@ export default function NavbarComponent(props) {
                 </p>
               </div>
               <div>
-                <p className="demiParag">Log out</p>
+                <p
+                  className="demiParag"
+                  onClick={() => {
+                    navi("/Search");
+                    window.location.reload(false);
+                  }}
+                >
+                  Log out
+                </p>
               </div>
             </div>
           ) : (
-            <Button onClick={()=>{
-              navi('/')
-            }} color="inherit">Login</Button>
+            <Button
+              onClick={() => {
+                // eslint-disable-next-line no-restricted-globals
+                navi("/");
+              }}
+              color="inherit"
+            >
+              Login
+            </Button>
           )}
         </Toolbar>
       </AppBar>

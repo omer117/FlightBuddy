@@ -8,13 +8,13 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export default function ResultPage(props) {
   const { Orig } = useParams();
+  const [selectedElementIndex, setSelectedElementIndex] = useState(null); // Add state to track selected element
   const [firstResults, setFirstResults] = useState([]); //results jsx array of objects
   const [firstResultsJsx, setFirstResultsJsx] = useState([]); //results jsx array of objects
-  const [secondResults, secondAirportResult] = useState([]); //results jsx array of objects
-  const [secondResultsJsx, setSecondResultjsx] = useState([]); //results jsx array of objects
-  const [selectedElementIndex, setSelectedElementIndex] = useState(null); // Add state to track selected element
+
 
   //!!  This is a function that get result of prices from the API
+  
   useEffect(() => {
     async function OrigSetter(from, to) {
       axios
@@ -30,40 +30,6 @@ export default function ResultPage(props) {
     // OrigSetter(props.data[0], Orig);
   }, [Orig]);
 
-  useEffect(() => {
-    async function OrigSetter(from, to) {
-      axios
-        .post("https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportsFlights", {
-          airportFrom: from,
-          airportTarget: to,
-        })
-        .then((response) => {
-          secondAirportResult(response.data);
-        });
-    }
-    OrigSetter(localStorage.getItem("secondFlight"), Orig); // to be erased before prod
-    // OrigSetter(props.data[1], Orig);
-  }, [Orig]);
-
-  useEffect(() => {
-    let secondResultsJSX = secondResults?.map((result, index) => {
-      return (
-        <ResultComponent
-          key={index}
-          idScssData={
-            selectedElementIndex === "index" ? "active selected" : "active"
-          }
-          onClick={() => {
-            setSelectedElementIndex(index);
-          }}
-          classData={"active"}
-          resultData={result}
-          setter={props.setter2}
-        />
-      );
-    });
-    setSecondResultjsx(secondResultsJSX);
-  }, [props.setter, props.setter2, secondResults, selectedElementIndex]);
   // A mapped array that returns a list of JSX objects that contain flight result data.
   useEffect(() => {
     let firstResultJSX = firstResults?.map((result, index) => {
@@ -89,10 +55,9 @@ export default function ResultPage(props) {
       <div className="mainDivContainer">
         {firstResultsJsx?.length > 0 ? (
           <div>
-            <h2>Step 3: Choose your flights!</h2>
+            <h2>Step 3: Choose your flight!</h2>
             <div className="SubContainer">
               <div className="List">{firstResultsJsx}</div>
-              <div className="List">{secondResultsJsx}</div>
             </div>
             <div id="nextLink">
               <Link className="nextLink" to={`/nextFlight/${Orig}`}>
