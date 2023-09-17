@@ -1,15 +1,14 @@
 import './App.scss';
-import RegisterPage from '../../Pages/Auth/RegisterPage/RegisterPage';
-import LogInPage from '../../Pages/Auth/LogInPage/LogInPage';
-import SearchPage from '../../Pages/searchPage/Search';
+import RegisterPage from './Pages/Auth/RegisterPage/RegisterPage';
+import LogInPage from './Pages/Auth/LogInPage/LogInPage';
+import SearchPage from './Pages/searchPage/Search';
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import ResultPage from '../../Pages/resultPage/ResultPage';
-import LastResultPage from '../../Pages/lastResultsPage/lastResultPage';
-import NavbarComponent from '../navBarComponent/navBarComponent';
-import airplane from "../../assets/images/airplane-travel-svgrepo-com 2.svg";
-import MyFlightPage from '../../Pages/myFlightPage/myFlightPage';
-import NextFlightPage from '../../Pages/nextFlightPage/NextFlightPage';
+import ResultPage from './Pages/resultPage/ResultPage';
+import LastResultPage from './Pages/lastResultsPage/lastResultPage';
+import NavbarComponent from './components/navBarComponent/navBarComponent';
+import MyFlightPage from './Pages/myFlightPage/myFlightPage';
+import NextFlightPage from './Pages/nextFlightPage/NextFlightPage';
 
 export function App() {
   const [chosenAirportsDataList, setChosenAirportsDataList] = useState([]);
@@ -35,7 +34,6 @@ export function App() {
   return (
     <>
       <NavbarComponent user={user} />
-      {/* <img src={airplane} className="airplane1" alt="airplane" /> */}
       <Routes>
         <Route path="/lastResult" element={<LastResultPage user={user} data={chosenFlight} />} />
         <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
@@ -53,8 +51,6 @@ export function App() {
         />
         <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
       </Routes>
-      {/* <img src={airplane} className="airplane2" alt="airplane" /> */}
-
     </>
   );
 }
