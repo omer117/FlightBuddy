@@ -8,7 +8,7 @@ export default function LastResultPage(props) {
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const navi = useNavigate();
   const chosenFlights = props.data;
-  console.log(JSON.parse(localStorage.getItem("user_id")));
+  console.log(chosenFlights);
   function clickHandler(props) {
     for (let i = 0; i < 2; i++) {
       chosenFlights[i].user_id = JSON.parse(localStorage.getItem("user_id"));
@@ -33,7 +33,7 @@ export default function LastResultPage(props) {
   });
 
   return (
-    <div>
+    <div className="containerDiv">
       <h1>Those are the flights you choosed</h1>
       {chosenFlightsJSX.length > 0 ? (
         <div className="chosenFlight">{chosenFlightsJSX}</div>

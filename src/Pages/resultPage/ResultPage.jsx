@@ -10,16 +10,18 @@ export default function ResultPage(props) {
   const [firstResults, setFirstResults] = useState([]); //results jsx array of objects
   const [firstResultsJsx, setFirstResultsJsx] = useState([]); //results jsx array of objects
 
-
   //!!  This is a function that get result of prices from the API
-  
+
   useEffect(() => {
     async function OrigSetter(from, to) {
       axios
-        .post("https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportsFlights", {
-          airportFrom: from,
-          airportTarget: to,
-        })
+        .post(
+          "https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportsFlights",
+          {
+            airportFrom: from,
+            airportTarget: to,
+          }
+        )
         .then((response) => {
           setFirstResults(response.data);
         });
@@ -47,25 +49,26 @@ export default function ResultPage(props) {
     setFirstResultsJsx(firstResultJSX);
   }, [firstResults]);
 
-
   return (
     <>
-      <div className="mainDivContainer">
-        {firstResultsJsx?.length > 0 ? (
-          <div>
-            <h2>Step 3: Choose your flight!</h2>
-            <div className="SubContainer">
-              <div className="List">{firstResultsJsx}</div>
+      <div className="containerDiv">
+        <div className="mainDivContainer">
+          {firstResultsJsx?.length > 0 ? (
+            <div>
+              <h2>Step 3: Choose your flight!</h2>
+              <div className="SubContainer">
+                <div className="List">{firstResultsJsx}</div>
+              </div>
+              <div id="nextLink">
+                <Link className="nextLink" to={`/nextFlight/${Orig}`}>
+                  Let's find your buddy a flight
+                </Link>
+              </div>
             </div>
-            <div id="nextLink">
-              <Link className="nextLink" to={`/nextFlight/${Orig}`}>
-                Let's find your buddy a flight
-              </Link>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </>
   );

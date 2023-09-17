@@ -38,15 +38,15 @@ export function App() {
         <Route path="/lastResult" element={<LastResultPage user={user} data={chosenFlight} />} />
         <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
         <Route path="/" element={<LogInPage userSetter={setUser} />} />
-        <Route path="/myFlights" element={<MyFlightPage />} />
-        <Route path="/nextFlight/:Orig" element={<NextFlightPage />} />
+        <Route path="/myFlights" element={<MyFlightPage/>} />
+        <Route path="/nextFlight/:Orig" element={
+          <NextFlightPage
+            setter2={setSecondChosenFlightDataList}
+          />} />
         <Route path="/result/:Orig"
           element=
           {<ResultPage data={chosenAirportsDataList}
             setter1={setFirstChosenFlightDataList}
-            setter2={setSecondChosenFlightDataList}
-            afterSetter1={firstChosenAirportsDataList}
-            afterSetter2={firstChosenAirportsDataList}
           />}
         />
         <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />

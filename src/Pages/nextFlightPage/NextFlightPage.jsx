@@ -50,6 +50,7 @@ export default function NextFlightPage(props){
     
 
     return(
+      <div className="containerDiv">
         <div className="mainDivContainer">
         {secondResultsJsx?.length > 0 ? (
           <div>
@@ -58,14 +59,15 @@ export default function NextFlightPage(props){
               <div className="List">{secondResultsJsx}</div>
             </div>
             <div id="nextLink">
-              <Link className="nextLink" to={`/myFlights`}>
+              <Link className="nextLink" to={`/lastResult`}>
                 Let's sum it up
               </Link>
             </div>
           </div>
         ) : (
           <></>
-        )}
+          )}
       </div>
+          </div>
     )
 }
