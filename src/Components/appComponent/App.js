@@ -35,7 +35,7 @@ export function App() {
   return (
     <>
       <NavbarComponent user={user} />
-      <img src={airplane} className="airplane1" alt="airplane" />
+      {/* <img src={airplane} className="airplane1" alt="airplane" /> */}
       <Routes>
         <Route path="/lastResult" element={<LastResultPage user={user} data={chosenFlight} />} />
         <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
@@ -53,7 +53,7 @@ export function App() {
         />
         <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
       </Routes>
-      <img src={airplane} className="airplane2" alt="airplane" />
+      {/* <img src={airplane} className="airplane2" alt="airplane" /> */}
 
     </>
   );

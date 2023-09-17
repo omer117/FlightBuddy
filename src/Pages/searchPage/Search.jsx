@@ -100,27 +100,36 @@ export default function SearchPage(props) {
     // using a function because you cannot async a useEffect function callback in react
     async function setter() {
       await axios
-        .post("https://flightbuddyserver.onrender.com/flightsAPI/useAirportAlgo", {
-          firstAirport: chosenData[0],
-          secondAirport: chosenData[1],
-        })
+        .post(
+          "https://flightbuddyserver.onrender.com/flightsAPI/useAirportAlgo",
+          {
+            firstAirport: chosenData[0],
+            secondAirport: chosenData[1],
+          }
+        )
         .then((response) => {
           setListOfAirports(response.data);
-        });
+        }).catch((err)=>{
+          console.log(err);
+        })
     }
     setter();
   }, [chosenData]);
 
   useEffect(() => {
     // Gets the data of the algo-chosen airports
+
     async function setter() {
       let tempArr = [];
       if (listOfAirports[0] !== null) {
         for (let i = 0; i < listOfAirports.length; i++) {
           await axios
-            .post("https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportData", {
-              targetAirport: listOfAirports[i].arr_code,
-            })
+            .post(
+              "https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportData",
+              {
+                targetAirport: listOfAirports[i].arr_code,
+              }
+            )
             .then((response) => {
               tempArr.push(response.data);
             });
@@ -145,7 +154,7 @@ export default function SearchPage(props) {
   });
 
   return (
-    <>
+    <div className="containerDiv">
       <div className="mainDiv">
         <div className="step1">
           <h2>Step 1: where both of you come from?</h2>
@@ -190,6 +199,6 @@ export default function SearchPage(props) {
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import ResultComponent from "../../components/ResultComponent/resultComponent";
+import { Link } from "react-router-dom";
 
 export default function MyFlightPage(props) {
   const [userFlights, setUserFlights] = useState([]);
@@ -31,18 +32,22 @@ export default function MyFlightPage(props) {
   });
 
   return (
-    <div className="mainDivContainer">
-      {chosenFlightsJSX !== undefined  ? (
-        <div>
-          <h1>The flights you choosed:</h1>
-          <div className="SubContainer">
-            <div className="List">{chosenFlightsJSX}</div>
+    <div className="containerDiv">
+      <div className="mainDivContainer">
+        {chosenFlightsJSX !== undefined ? (
+          <div>
+            <h1>The flights you choosed:</h1>
+            <div className="SubContainer">
+              <div className="List">{chosenFlightsJSX}</div>
+            </div>
           </div>
-        </div>
-      ) : (
-        <h1>you did not choosed flights yet!</h1>
-      )}
+        ) : (
+          <div>
+          <h1>you did not choosed flights yet!</h1>
+          <Link to="/Search">choose now !</Link>
+          </div>
+        )}
+      </div>
     </div>
-
   );
 }
