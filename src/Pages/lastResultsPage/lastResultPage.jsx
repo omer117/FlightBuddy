@@ -1,4 +1,4 @@
-import ResultComponent from "../../components/ResultComponent/resultComponent";
+import ResultComponent from "../../Components/ResultComponent/resultComponent";
 import { Button } from "@mui/material";
 import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";

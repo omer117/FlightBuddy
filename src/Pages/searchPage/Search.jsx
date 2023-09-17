@@ -110,7 +110,7 @@ export default function SearchPage(props) {
         .then((response) => {
           setListOfAirports(response.data);
         }).catch((err)=>{
-          console.log(err);
+          console.log(err)
         })
     }
     setter();

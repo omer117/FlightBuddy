@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import ResultComponent from "../../components/ResultComponent/resultComponent";
+import ResultComponent from "../../Components/ResultComponent/resultComponent";
 import { Link } from "react-router-dom";
 
 export default function MyFlightPage(props) {

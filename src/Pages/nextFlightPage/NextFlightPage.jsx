@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './NextFlightPage.scss'
 import axios from 'axios';
-import ResultComponent from '../../components/ResultComponent/resultComponent';
+import ResultComponent from '../../Components/ResultComponent/resultComponent';
 import { Link, useParams } from 'react-router-dom';
 
 

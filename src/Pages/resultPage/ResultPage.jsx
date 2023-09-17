@@ -2,7 +2,7 @@ import "./ResultPage.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ResultComponent from "../../components/ResultComponent/resultComponent";
+import ResultComponent from "../../Components/ResultComponent/resultComponent";
 
 export default function ResultPage(props) {
   const { Orig } = useParams();
