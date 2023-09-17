@@ -3,8 +3,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ResultComponent from "../../components/ResultComponent/resultComponent";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export default function ResultPage(props) {
   const { Orig } = useParams();
