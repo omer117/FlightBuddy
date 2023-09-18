@@ -171,10 +171,10 @@ export default function SearchPage(props) {
                 <ComboBox htmlFor="airport2" name="airport2" />
               </div>
             </div>
-            <div className="dateSearchDiv">
+            {/* <div className="dateSearchDiv">
               <p>And when?</p>
               <input type="date" htmlFor="dateOfFlight" name="dateOfFlight" />
-            </div>
+            </div> */}
           </form>
         </div>
         <div className="findAPlaceBtnDiv">
@@ -202,3 +202,5 @@ export default function SearchPage(props) {
     </div>
   );
 }
+
+

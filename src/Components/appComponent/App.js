@@ -9,6 +9,7 @@ import LastResultPage from '../../Pages/lastResultsPage/lastResultPage';
 import NavbarComponent from '../navBarComponent/navBarComponent';
 import MyFlightPage from '../../Pages/myFlightPage/myFlightPage';
 import NextFlightPage from '../../Pages/nextFlightPage/NextFlightPage';
+import FooterComponent from '../footerComponent/footerComponent';
 
 export function App() {
   const [chosenAirportsDataList, setChosenAirportsDataList] = useState([]);
@@ -51,6 +52,7 @@ export function App() {
         />
         <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
       </Routes>
+      <FooterComponent/>
     </>
   );
 }

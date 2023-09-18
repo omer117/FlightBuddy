@@ -14,12 +14,16 @@ import { useNavigate } from "react-router-dom";
 export default function NavbarComponent(props) {
   const navi = useNavigate();
 
+  function toSearch(){
+    navi('/Search')
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar className="navBarMainDiv" position="static">
         <Toolbar>
           <IconButton
+          onClick={toSearch}
             size="large"
             edge="start"
             color="inherit"
@@ -37,12 +41,6 @@ export default function NavbarComponent(props) {
                 <Link to="/myFlights" className="demiParag">
                   My Flights
                 </Link>
-              </div>
-              <div></div>
-              <div>
-                <p className="demiParag">
-                  Hello, <p className="demiOParag">{props.user}</p>
-                </p>
               </div>
               <div>
                 <p

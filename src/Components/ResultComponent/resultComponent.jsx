@@ -3,7 +3,6 @@ import "./resultComponent.scss";
 
 export default function ResultComponent(props) {
   const [isActive, setActive] = useState(true);
-  const [isClicked, setClicked] = useState(false);
 
   function clickHandler() {
     if (props.classData === "active") {
@@ -42,7 +41,7 @@ export default function ResultComponent(props) {
           <div className="departureInfo">
             <div className="departureLocation">
               <h2 className="airportHeader">
-                {props.resultData.arr_code}-{props.resultData.dep_airport_name}
+                {props.resultData.dep_code}-{props.resultData.dep_airport_name}
               </h2>
               <p className="airportCountry">{props.resultData.dep_country}</p>
               <p className="timeOfDepartureDate">{props.resultData.dep_time}</p>

@@ -19,6 +19,7 @@ export default function LastResultPage(props) {
         .then((response) => {
           if (response.status === 200) {
             console.log("we successfully added your flights");
+            navi('/myFlights')
           } else {
             alert("something went wrong");
           }

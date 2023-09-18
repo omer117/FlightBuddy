@@ -20,7 +20,6 @@
     align-items: center;
     height: fit-content;
 
-    // Add responsive styles for smaller screens
     @media (max-width: 768px) {
         padding: 1%;
     }
@@ -30,7 +29,6 @@
         margin: 5% auto;
         font-size: 20px;
 
-        // Add responsive styles for smaller screens
         @media (max-width: 768px) {
             margin: 2% auto;
         }
@@ -39,14 +37,13 @@
     .searchDiv {
         padding: 5%;
         border-radius: 15px;
-        background-color: #F2F7A1;
+        background-color: #eeeeeed1;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin-right: 0 !important;
 
-        // Add responsive styles for smaller screens
         @media (max-width: 768px) {
             margin: 0 !important;
         }
@@ -55,8 +52,10 @@
     .findAPlaceBtnDiv {
         text-align: center;
         margin-top: 5%;
-
+        color: white;
+        
         .findAPlaceBtn {
+            background-color: #000;
             margin: 5% 0;
         }
 
@@ -97,6 +96,10 @@
         }
     }
 
+    a{
+        text-decoration: none !important;
+    }
+
     .airportsList {
         display: flex;
         flex-wrap: wrap;
@@ -104,7 +107,7 @@
         width: 100%;
 
         .airportClass {
-            background-color: #F2F7A1 !important;
+        background-color: #eeeeeed1;
             color: #000 !important;
             width: 32%;
             border-style: groove;

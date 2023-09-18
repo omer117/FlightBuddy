@@ -1,3 +1,5 @@
+
+import './myFlightPage.scss'
 import { useState } from "react";
 import axios from "axios";
 import ResultComponent from "../../Components/ResultComponent/resultComponent";

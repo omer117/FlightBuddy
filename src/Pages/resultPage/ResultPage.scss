@@ -1,10 +1,8 @@
 .nextLink {
     text-decoration: none;
     font-size: large;
-    font-weight: 700;
     border-style: groove;
-    color: #000;
-    text-shadow: 3px 3px #ffd0d0 !important;
+    color: white;
     padding: 4%;
 }
 
@@ -17,7 +15,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffd0d0;
+    background: #000;
+    color: #FFF;
     border-color: #000;
     border-radius: 2px;
 }

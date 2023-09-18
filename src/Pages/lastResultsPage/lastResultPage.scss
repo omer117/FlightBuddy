@@ -1,5 +1,5 @@
 .chosenFlight {
-    background-color: #c1ece4;
+    background: #35a29f;
     padding: 2%;
     margin: auto;
     width: fit-content;
@@ -13,8 +13,19 @@
     }
 }
 
+.btnDiv {
+    background-color: #000;
+    color: #fff;
+    padding: 2%;
+    display: flex;
+    text-align: center;
+    a {
+        text-decoration: none;
+        font-weight: 600;
+    }
+}
+
 h1 {
-    text-shadow: 1px 1px #ffd0d0;
     text-decoration: none !important;
     text-align: center;
     color: #000;
@@ -25,10 +36,8 @@ h1 {
 }
 
 .SaveBtn {
-    text-shadow: 1px 1px #ffd0d0;
     text-decoration: none !important;
     text-align: center;
-    background-color: #c1ece4 !important;
     color: #000 !important;
 
     @media screen and (max-width: 768px) {
