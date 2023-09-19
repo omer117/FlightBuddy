@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Button } from "@mui/material";
+import LoadingComponent from "../../Components/LoadingComponent/LoadingComponent";
 import { Link } from "react-router-dom";
 
 export default function SearchPage(props) {
@@ -18,6 +19,7 @@ export default function SearchPage(props) {
   //  The data of airports that was given by the algorithm
   const [listOfAirportAlgoData, setListOfAirportAlgoData] = useState([]);
 
+  console.log(airportsNames);
   function ComboBox(props) {
     console.log(listOfAirports);
     return (
@@ -109,9 +111,10 @@ export default function SearchPage(props) {
         )
         .then((response) => {
           setListOfAirports(response.data);
-        }).catch((err)=>{
-          console.log(err)
         })
+        .catch((err) => {
+          console.log(err);
+        });
     }
     setter();
   }, [chosenData]);
@@ -155,40 +158,44 @@ export default function SearchPage(props) {
 
   return (
     <div className="containerDiv">
-      <div className="mainDiv">
-        <div className="step1">
-          <h2>Step 1: where both of you come from?</h2>
-        </div>
-        <div className="searchDiv">
-          <form onSubmit={onFormSubmit} id="findAirportForm">
-            <div className="placesSearchDiv">
-              <div className="userOrigin">
-                <p>I'm coming from</p>
-                <ComboBox htmlFor="airport1" name="airport1" />
+      {airportsNames.length > 0 ? (
+        <div className="mainDiv">
+          <div className="step1">
+            <h2>Step 1: where both of you come from?</h2>
+          </div>
+          <div className="searchDiv">
+            <form onSubmit={onFormSubmit} id="findAirportForm">
+              <div className="placesSearchDiv">
+                <div className="userOrigin">
+                  <p>I'm coming from</p>
+                  <ComboBox htmlFor="airport1" name="airport1" />
+                </div>
+                <div className="BuddyOrigin">
+                  <p>My buddy comes from</p>
+                  <ComboBox htmlFor="airport2" name="airport2" />
+                </div>
               </div>
-              <div className="BuddyOrigin">
-                <p>My buddy comes from</p>
-                <ComboBox htmlFor="airport2" name="airport2" />
+              <div className="dateSearchDiv">
+                <p>And when?</p>
+                <input type="date" htmlFor="dateOfFlight" name="dateOfFlight" />
               </div>
-            </div>
-            {/* <div className="dateSearchDiv">
-              <p>And when?</p>
-              <input type="date" htmlFor="dateOfFlight" name="dateOfFlight" />
-            </div> */}
-          </form>
+            </form>
+          </div>
+          <div className="findAPlaceBtnDiv">
+            <Button
+              className="findAPlaceBtn"
+              variant="contained"
+              type="submit"
+              form="findAirportForm"
+              value="Submit"
+            >
+              Find us a place to meet at !
+            </Button>
+          </div>
         </div>
-        <div className="findAPlaceBtnDiv">
-          <Button
-            className="findAPlaceBtn"
-            variant="contained"
-            type="submit"
-            form="findAirportForm"
-            value="Submit"
-          >
-            Find us a place to meet at !
-          </Button>
-        </div>
-      </div>
+      ) : (
+        <LoadingComponent />
+      )}
       {chosenList.length > 0 ? (
         <div className="search2Div">
           <h1>Step 2: Choose where do you want to meet?</h1>
@@ -202,5 +209,3 @@ export default function SearchPage(props) {
     </div>
   );
 }
-
-

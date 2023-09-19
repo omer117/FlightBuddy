@@ -1,6 +1,6 @@
 //SQLInjection preventation on the submiting of the password and the username 
 export  function passwordValidation(password) {
-    const specialCharsForPassowrd = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    let specialCharsForPassowrd = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     if (password.length < 8 || specialCharsForPassowrd.test(password))
         return false;

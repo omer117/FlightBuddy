@@ -1,7 +1,5 @@
-
 import "./RegisterPage.scss";
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -9,11 +7,16 @@ import { Link } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {
+  emailValidation,
+  passwordValidation,
+  userValidation,
+} from "../validation/validationFunctions";
+import { useState } from "react";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -21,6 +24,7 @@ const defaultTheme = createTheme();
 
 export default function RegisterPage(props) {
   const navi = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,20 +34,26 @@ export default function RegisterPage(props) {
       email: data.get("email"),
       password: data.get("password"),
     };
-
-    axios
-      .post("https://flightbuddyserver.onrender.com/AuthAPI/register", {
-        username: dataObject.username,
-        email: dataObject.email,
-        password: dataObject.password,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          props.userSetter(`${dataObject.username}`);
-          navi("/Search");
-        } else {
-        }
-      });
+    if (
+      userValidation(dataObject.username) &&
+      passwordValidation(dataObject.password) &&
+      emailValidation(dataObject.email)
+    ) {
+      axios
+        .post("https://flightbuddyserver.onrender.com/AuthAPI/register", {
+          username: dataObject.username,
+          email: dataObject.email,
+          password: dataObject.password,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            props.userSetter(`${dataObject.username}`);
+            navi("/");
+          }
+        })
+    }else{
+      setErrorMessage("Invalid Input,please try again")
+    }
   };
 
   return (
@@ -107,8 +117,9 @@ export default function RegisterPage(props) {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Register
               </Button>
+              {errorMessage !== undefined ? <h4>{errorMessage}</h4> : <></>}
               <Grid container>
                 <Grid item xs>
                   <Grid item>
