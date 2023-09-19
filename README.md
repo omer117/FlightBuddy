@@ -60,7 +60,7 @@ _______________________________________________________
 
 
 ### Link to [flightBuddy](https://flightbuddy.onrender.com/) 
-### Link to [Design Docs](not yet)
+### Link to [Design Docs](https://github.com/omer117/FlightBuddy/blob/main/designDocs.md)
 _______________________________________________________
 ## Contact me
 - [LinkedIn](https://www.linkedin.com/in/omer-asraf/)
