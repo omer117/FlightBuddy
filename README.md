@@ -59,10 +59,10 @@ serve -s build
 _______________________________________________________
 
 
-### Link to [flightBuddy](not yes) 
+### Link to [flightBuddy](https://flightbuddy.onrender.com/) 
 ### Link to [Design Docs](not yet)
 _______________________________________________________
 ## Contact me
 - [LinkedIn](https://www.linkedin.com/in/omer-asraf/)
 - [Github](https://github.com/omer117)
-- gmail: omerasraf91@gmail.com
+- Gmail: omerasraf91@gmail.com
