@@ -6,6 +6,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { Button } from "@mui/material";
 import LoadingComponent from "../../Components/LoadingComponent/LoadingComponent";
 import { Link } from "react-router-dom";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function SearchPage(props) {
   // All of the names of the big airports of the world
@@ -19,9 +21,9 @@ export default function SearchPage(props) {
   //  The data of airports that was given by the algorithm
   const [listOfAirportAlgoData, setListOfAirportAlgoData] = useState([]);
 
-  console.log(airportsNames);
+  const [dateValue, setDateValue] = useState("");
+
   function ComboBox(props) {
-    console.log(listOfAirports);
     return (
       <Autocomplete
         className="inputClass"
@@ -80,6 +82,7 @@ export default function SearchPage(props) {
     event.preventDefault();
     let formData = new FormData(event.target);
     let realFormData = Object.fromEntries(formData);
+    console.log(`${dateValue.$D + 1}/${dateValue.$M}/${dateValue.$y}`);
     let airport1;
     let airport2;
 
@@ -95,6 +98,10 @@ export default function SearchPage(props) {
     props.setterFunction([airport1, airport2, realFormData.dateOfFlight]);
     localStorage.setItem("firstFlight", airport1);
     localStorage.setItem("secondFlight", airport2);
+    localStorage.setItem(
+      "date",
+      `${dateValue.$D + 1}/${dateValue.$M}/${dateValue.$y}`
+    );
   };
 
   useEffect(() => {
@@ -175,10 +182,18 @@ export default function SearchPage(props) {
                   <ComboBox htmlFor="airport2" name="airport2" />
                 </div>
               </div>
-              <div className="dateSearchDiv">
+              {/* <div className="dateSearchDiv">
                 <p>And when?</p>
-                <input type="date" htmlFor="dateOfFlight" name="dateOfFlight" />
-              </div>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    htmlFor="date"
+                    name="date"
+                    label="date"
+                    value={dateValue}
+                    onChange={(newValue) => setDateValue(newValue)}
+                  />
+                </LocalizationProvider>
+              </div> */}
             </form>
           </div>
           <div className="findAPlaceBtnDiv">
