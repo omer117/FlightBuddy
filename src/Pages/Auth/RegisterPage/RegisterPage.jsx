@@ -24,6 +24,7 @@ const defaultTheme = createTheme();
 
 export default function RegisterPage(props) {
   const navi = useNavigate();
+  const [token, setToken] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
@@ -34,11 +35,15 @@ export default function RegisterPage(props) {
       email: data.get("email"),
       password: data.get("password"),
     };
+    console.log(userValidation(dataObject.username));
+    console.log(passwordValidation(dataObject.password));
+    console.log(emailValidation(dataObject.email));
     if (
       userValidation(dataObject.username) &&
       passwordValidation(dataObject.password) &&
       emailValidation(dataObject.email)
     ) {
+      console.log("im in ");
       axios
         .post("https://flightbuddyserver.onrender.com/AuthAPI/register", {
           username: dataObject.username,
@@ -46,13 +51,22 @@ export default function RegisterPage(props) {
           password: dataObject.password,
         })
         .then((response) => {
+          console.log(response.data);
           if (response.status === 200) {
-            props.userSetter(`${dataObject.username}`);
-            navi("/");
+            setToken(response.data.token);
+            props.userSetter(dataObject.username);
+            localStorage.setItem("token", JSON.stringify(response.data.token));
+            localStorage.setItem(
+              "user_id",
+              JSON.stringify(response.data.user_id)
+            );
+            navi("/Search");
+          } else if (response.status === 500) {
+            setErrorMessage("Invalid Input,please try again");
           }
-        })
-    }else{
-      setErrorMessage("Invalid Input,please try again")
+        });
+    } else {
+      setErrorMessage("Invalid Input,please try again");
     }
   };
 

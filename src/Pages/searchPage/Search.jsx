@@ -196,6 +196,7 @@ export default function SearchPage(props) {
       ) : (
         <LoadingComponent />
       )}
+
       {chosenList.length > 0 ? (
         <div className="search2Div">
           <h1>Step 2: Choose where do you want to meet?</h1>

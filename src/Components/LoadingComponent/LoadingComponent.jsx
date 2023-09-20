@@ -1,11 +1,12 @@
-import "./LoadingComponent.scss"
+import "./LoadingComponent.scss";
 
-
-export default function LoadingComponent(){
-
-    return(
-            <div className="ring">Loading
-            <span className="loading"></span>
-        </div>
-    )
+export default function LoadingComponent() {
+  return (
+    <div className="mainRingDiv">
+      <div className="ring">
+        Loading
+        <span className="loading"></span>
+      </div>
+    </div>
+  );
 }
