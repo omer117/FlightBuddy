@@ -17,6 +17,7 @@ import {
   userValidation,
 } from "../validation/validationFunctions";
 import { useState } from "react";
+import { Alert, AlertTitle } from "@mui/material";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -25,7 +26,7 @@ const defaultTheme = createTheme();
 export default function RegisterPage(props) {
   const navi = useNavigate();
   const [token, setToken] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,7 +44,6 @@ export default function RegisterPage(props) {
       passwordValidation(dataObject.password) &&
       emailValidation(dataObject.email)
     ) {
-      console.log("im in ");
       axios
         .post("https://flightbuddyserver.onrender.com/AuthAPI/register", {
           username: dataObject.username,
@@ -66,13 +66,13 @@ export default function RegisterPage(props) {
           }
         });
     } else {
-      setErrorMessage("Invalid Input,please try again");
+      setErrorMessage("Please enter a valid password");
     }
   };
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main">
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className="RegisterImg" sx={{}} />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -133,7 +133,11 @@ export default function RegisterPage(props) {
               >
                 Register
               </Button>
-              {errorMessage !== undefined ? <h4>{errorMessage}</h4> : <></>}
+              {errorMessage !== undefined ? (
+                <Alert severity="error">{errorMessage}</Alert>
+              ) : (
+                <></>
+              )}
               <Grid container>
                 <Grid item xs>
                   <Grid item>
@@ -143,6 +147,15 @@ export default function RegisterPage(props) {
                   </Grid>
                 </Grid>
               </Grid>
+                <Grid sx={{mt:3}}>
+                  <Alert severity="info">
+                    <AlertTitle>Info</AlertTitle>
+                    Please enter a valid password:
+                    <strong>
+                    <p>more then 8 characters</p>
+                    </strong>
+                  </Alert>
+                </Grid>
             </Box>
           </Box>
         </Grid>

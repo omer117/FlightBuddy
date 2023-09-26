@@ -9,6 +9,15 @@
     text-decoration: none !important;
 }
 
+.loadingSkeleton{
+    margin: auto;
+
+    .skeletonAvatar{
+        display: flex;
+        justify-content: center;
+    }
+}
+
 h4{
     color: red;
 }

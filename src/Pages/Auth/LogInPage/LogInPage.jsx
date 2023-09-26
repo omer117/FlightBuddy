@@ -5,6 +5,8 @@ import facebookIcon from "../../../assets/images/facebook.svg";
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
@@ -14,13 +16,14 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   passwordValidation,
   userValidation,
 } from "../validation/validationFunctions";
+import { Alert } from "@mui/material";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -28,10 +31,23 @@ const defaultTheme = createTheme();
 
 export default function LogInPage(props) {
   const [token, setToken] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
+  const [serverValidation, setServerValidation] = useState()
 
   const navi = useNavigate();
-  console.log(errorMessage);
+
+
+  useEffect(()=>{
+    async function setter(){
+      await axios.get('https://flightbuddyserver.onrender.com/').then((response)=>{
+        setServerValidation(response.data)
+      })
+    }
+    setter();
+  },[])
+
+
+  // function that handles the submit action
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -39,12 +55,10 @@ export default function LogInPage(props) {
       username: data.get("username"),
       password: data.get("password"),
     };
-    console.log(dataObj);
     if (
       passwordValidation(dataObj.password) &&
       userValidation(dataObj.username)
     ) {
-      console.log("yay");
       axios
         .post("https://flightbuddyserver.onrender.com/AuthAPI/login", {
           username: dataObj.username,
@@ -71,80 +85,108 @@ export default function LogInPage(props) {
     }
   };
 
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className="logInImg" sx={{}} />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
+        {serverValidation !== undefined ? (
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={5}
+            component={Paper}
+            elevation={6}
+            square
           >
-            <Avatar sx={{ m: 1, bgcolor: "main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
             <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{
+                my: 8,
+                mx: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+              <Avatar sx={{ m: 1, bgcolor: "main" }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <Box
+                component="form"
+                noValidate
+                onSubmit={handleSubmit}
+                sx={{ mt: 1 }}
               >
-                Sign In
-              </Button>
-              {errorMessage !== undefined ? <h4>{errorMessage}</h4> : <></>}
-              <Grid container>
-                <Grid item xs>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="username"
+                  label="username"
+                  name="username"
+                  autoComplete="username"
+                  autoFocus
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Sign In
+                </Button>
+                {errorMessage !== undefined ? <Alert severity="error">{errorMessage}</Alert> : <></>}
+                <Grid container>
+                  <Grid item xs>
+                    <Grid item>
+                      <Link
+                        className="linkLogIn"
+                        to="/Register"
+                        variant="body2"
+                      >
+                        Sign Up
+                      </Link>
+                    </Grid>
+                  </Grid>
                   <Grid item>
-                    <Link className="linkLogIn" to="/Register" variant="body2">
-                      Sign Up
+                    <Link className="linkLogIn" to="/Search">
+                      Continue as guest
                     </Link>
                   </Grid>
                 </Grid>
-                <Grid item>
-                  <Link className="linkLogIn" to="/Search">
-                    Continue as guest
-                  </Link>
-                </Grid>
-              </Grid>
+              </Box>
             </Box>
-          </Box>
-        </Grid>
+          </Grid>
+        ) : (
+          <div className="loadingSkeleton">
+            <Stack spacing={3}>
+              <div className="skeletonAvatar">
+                <Skeleton variant="circular" width={60} height={60} />
+              </div>
+              <Skeleton variant="rounded" width={310} height={60} />
+              <Skeleton variant="rounded" width={310} height={60} />
+              <div className="skeletonAvatar">
+              <Skeleton variant="rounded" width={250} height={40} />
+              </div>
+            </Stack>
+          </div>
+        )}
       </Grid>
     </ThemeProvider>
   );

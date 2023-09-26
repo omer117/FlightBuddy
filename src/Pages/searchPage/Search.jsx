@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Button } from "@mui/material";
+import { Alert, AlertTitle, Button } from "@mui/material";
 import LoadingComponent from "../../Components/LoadingComponent/LoadingComponent";
 import { Link } from "react-router-dom";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
@@ -126,6 +126,8 @@ export default function SearchPage(props) {
     setter();
   }, [chosenData]);
 
+  console.log(listOfAirports[0]);
+
   useEffect(() => {
     // Gets the data of the algo-chosen airports
 
@@ -198,7 +200,6 @@ export default function SearchPage(props) {
           </div>
           <div className="findAPlaceBtnDiv">
             <Button
-              className="findAPlaceBtn"
               variant="contained"
               type="submit"
               form="findAirportForm"
@@ -207,6 +208,14 @@ export default function SearchPage(props) {
               Find us a place to meet at !
             </Button>
           </div>
+          {listOfAirports[0] == null ? (
+            <Alert sx={{mt:3}} severity="warning">
+              <AlertTitle>We could not find a suitable airport</AlertTitle>
+              Please try again with other airports
+            </Alert>
+          ) : (
+            <></>
+          )}
         </div>
       ) : (
         <LoadingComponent />
