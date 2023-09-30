@@ -3,11 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Alert, AlertTitle, Button } from "@mui/material";
-import LoadingComponent from "../../Components/LoadingComponent/LoadingComponent";
-import { Link } from "react-router-dom";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { Alert, AlertTitle, Button, Card, Link } from "@mui/material";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+// import { Link } from "react-router-dom";
+
+// import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function SearchPage(props) {
   // All of the names of the big airports of the world
@@ -20,9 +22,10 @@ export default function SearchPage(props) {
   const [listOfAirports, setListOfAirports] = useState([]);
   //  The data of airports that was given by the algorithm
   const [listOfAirportAlgoData, setListOfAirportAlgoData] = useState([]);
-
   const [dateValue, setDateValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
 
+  // console.log(listOfAirports);
   function ComboBox(props) {
     return (
       <Autocomplete
@@ -74,7 +77,7 @@ export default function SearchPage(props) {
         setAirportNames(airportNames);
       })
       .catch((error) => {
-        console.log(error);
+        setErrorMessage(error);
       });
   }, []);
 
@@ -126,8 +129,6 @@ export default function SearchPage(props) {
     setter();
   }, [chosenData]);
 
-  console.log(listOfAirports[0]);
-
   useEffect(() => {
     // Gets the data of the algo-chosen airports
 
@@ -152,16 +153,17 @@ export default function SearchPage(props) {
     setter();
   }, [listOfAirports]);
 
+  console.log(listOfAirports[0]);
   // A mapped array of airports data that goes to JSX Object.
   let chosenList = listOfAirportAlgoData?.map((airport) => {
     return (
-      <div className="airportClass">
+      <Card variant="contained" className="airportClass">
         <div className="countryName">{airport["Country Name"]}</div>
         <div className="code">{airport.Orig}</div>
-        <Link to={`/result/${airport.Orig}`}>
+        <Link underline="hover" href={`/result/${airport.Orig}`}>
           <div className="Name">{airport.Name}</div>
         </Link>
-      </div>
+      </Card>
     );
   });
 
@@ -208,8 +210,8 @@ export default function SearchPage(props) {
               Find us a place to meet at !
             </Button>
           </div>
-          {listOfAirports[0] == null ? (
-            <Alert sx={{mt:3}} severity="warning">
+          {listOfAirports[0] == null && chosenData.length > 0 ? (
+            <Alert sx={{ mt: 3 }} severity="warning">
               <AlertTitle>We could not find a suitable airport</AlertTitle>
               Please try again with other airports
             </Alert>
@@ -218,7 +220,9 @@ export default function SearchPage(props) {
           )}
         </div>
       ) : (
-        <LoadingComponent />
+        <Box className="mainLoading" sx={{ display: "flex" }}>
+          <CircularProgress />
+        </Box>
       )}
 
       {chosenList.length > 0 ? (

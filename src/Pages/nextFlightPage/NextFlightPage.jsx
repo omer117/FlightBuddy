@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import './NextFlightPage.scss'
 import axios from 'axios';
 import ResultComponent from '../../Components/ResultComponent/resultComponent';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
+import { Link } from '@mui/material';
+
 
 
 export default function NextFlightPage(props){
@@ -59,7 +61,7 @@ export default function NextFlightPage(props){
               <div className="List">{secondResultsJsx}</div>
             </div>
             <div id="nextLink">
-              <Link className="nextLink" to={`/lastResult`}>
+              <Link  underline="hover" className="nextLink" href={`/lastResult`}>
                 Let's sum it up
               </Link>
             </div>

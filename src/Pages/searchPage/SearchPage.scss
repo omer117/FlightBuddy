@@ -96,10 +96,7 @@
         }
     }
 
-    a{
-        text-decoration: none !important;
-    }
-
+ 
     .airportsList {
         display: flex;
         flex-wrap: wrap;
@@ -107,19 +104,26 @@
         width: 100%;
 
         .airportClass {
-        background-color: #eeeeeed1;
-            color: #000 !important;
             width: 32%;
-            border-style: groove;
-            border-color: #000;
-            height: fit-content;
-            padding: 3%;
+            padding: 4%;
             margin: 2% 0;
+            font-size: large;
 
             // Add responsive styles for smaller screens
             @media (max-width: 768px) {
                 width: 100%;
             }
         }
+    }
+}
+
+.mainLoading{
+    justify-content: center;
+    height: 70vh;
+
+    span{
+        width: 100px !important;
+        height: 100px !important;
+        margin-top: 7%;
     }
 }
