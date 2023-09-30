@@ -1,6 +1,6 @@
 import ResultComponent from "../../Components/ResultComponent/resultComponent";
 import { Button } from "@mui/material";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./lastResultPage.scss";
 
@@ -8,7 +8,7 @@ export default function LastResultPage(props) {
   const user_id = JSON.parse(localStorage.getItem("user_id"));
   const navi = useNavigate();
   const chosenFlights = props.data;
-  console.log(chosenFlights);
+
   function clickHandler(props) {
     for (let i = 0; i < 2; i++) {
       chosenFlights[i].user_id = JSON.parse(localStorage.getItem("user_id"));
@@ -19,15 +19,13 @@ export default function LastResultPage(props) {
         .then((response) => {
           if (response.status === 200) {
             console.log("we successfully added your flights");
-            navi('/myFlights')
+            navi("/myFlights");
           } else {
             alert("something went wrong");
           }
         });
     }
   }
-
-  console.log(user_id);
 
   const chosenFlightsJSX = chosenFlights.map((flight) => {
     return <ResultComponent disabled={"disabled"} resultData={flight} />;
@@ -43,16 +41,23 @@ export default function LastResultPage(props) {
       )}
       {props.user !== undefined ? (
         <div className="btnDiv">
-          {user_id!==null ? 
-          
-          <Button onClick={clickHandler} className="SaveBtn">
-            Save Here
-          </Button>
-          :
-           <div>
-          <p>you will need an account to save your flights</p>
-              <Link to='/logIn'>Log In</Link>
-            </div>}
+          {user_id !== null ? (
+            <Button onClick={clickHandler} className="SaveBtn">
+              Save Here
+            </Button>
+          ) : (
+            <div>
+              <p>you will need an account to save your flights</p>
+              <Button
+                onClick={() => {
+                  navi('/');
+                }}
+                variant="contained"
+              >
+                Log In
+              </Button>
+            </div>
+          )}
         </div>
       ) : (
         <></>

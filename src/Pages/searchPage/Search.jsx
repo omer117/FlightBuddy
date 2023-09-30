@@ -3,10 +3,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Alert, AlertTitle, Button, Card, Link } from "@mui/material";
+import { Alert, AlertTitle, Button, Card } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 // import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 // import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -160,7 +161,7 @@ export default function SearchPage(props) {
       <Card variant="contained" className="airportClass">
         <div className="countryName">{airport["Country Name"]}</div>
         <div className="code">{airport.Orig}</div>
-        <Link underline="hover" href={`/result/${airport.Orig}`}>
+        <Link underline="hover" to={`/result/${airport.Orig}`}>
           <div className="Name">{airport.Name}</div>
         </Link>
       </Card>

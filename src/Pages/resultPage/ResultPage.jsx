@@ -1,10 +1,8 @@
 import "./ResultPage.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ResultComponent from "../../Components/ResultComponent/resultComponent";
-import { Link } from "@mui/material";
-
 
 export default function ResultPage(props) {
   const { Orig } = useParams();
@@ -62,8 +60,11 @@ export default function ResultPage(props) {
                 <div className="List">{firstResultsJsx}</div>
               </div>
               <div id="nextLink">
-                
-                <Link underline="hover" className="nextLink" href={`/nextFlight/${Orig}`}>
+                <Link
+                  underline="hover"
+                  className="nextLink"
+                  to={`/nextFlight/${Orig}`}
+                >
                   Let's find your buddy a flight
                 </Link>
               </div>
