@@ -3,6 +3,8 @@ import "./NextFlightPage.scss";
 import axios from "axios";
 import ResultComponent from "../../Components/ResultComponent/resultComponent";
 import { Link, useParams } from "react-router-dom";
+import {CircularProgress, Box } from "@mui/material";
+
 
 export default function NextFlightPage(props) {
   const [secondResults, secondAirportResult] = useState([]); //results jsx array of objects
@@ -51,8 +53,8 @@ export default function NextFlightPage(props) {
 
   return (
     <div className="containerDiv">
-      <div className="mainDivContainer">
-        {secondResultsJsx?.length > 0 ? (
+      {secondResultsJsx?.length > 0 ? (
+        <div className="mainDivContainer">
           <div>
             <h2>Now Choose your buddy flight!</h2>
             <div className="SubContainer">
@@ -64,10 +66,14 @@ export default function NextFlightPage(props) {
               </Link>
             </div>
           </div>
-        ) : (
-          <></>
-        )}
-      </div>
+        </div>
+      ) : (
+        <>
+                    <Box className="mainLoading" sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
+        </>
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ResultComponent from "../../Components/ResultComponent/resultComponent";
+import { Box, CircularProgress } from "@mui/material";
 
 export default function ResultPage(props) {
   const { Orig } = useParams();
@@ -49,30 +50,38 @@ export default function ResultPage(props) {
     setFirstResultsJsx(firstResultJSX);
   }, [firstResults]);
 
+  console.log(localStorage.date);
   return (
     <>
       <div className="containerDiv">
-        <div className="mainDivContainer">
-          {firstResultsJsx?.length > 0 ? (
-            <div>
-              <h2>Step 3: Choose your flight!</h2>
-              <div className="SubContainer">
-                <div className="List">{firstResultsJsx}</div>
-              </div>
-              <div id="nextLink">
-                <Link
-                  underline="hover"
-                  className="nextLink"
-                  to={`/nextFlight/${Orig}`}
-                >
-                  Let's find your buddy a flight
-                </Link>
+        {firstResultsJsx?.length > 0 ? (
+          <>
+            <div className="mainDivContainer">
+              <div>
+                <h2>Step 3: Choose your flight For the Date Of </h2>
+                <h2>{localStorage.getItem("date")}</h2>
+                <div className="SubContainer">
+                  <div className="List">{firstResultsJsx}</div>
+                </div>
+                <div id="nextLink">
+                  <Link
+                    underline="hover"
+                    className="nextLink"
+                    to={`/nextFlight/${Orig}`}
+                  >
+                    Let's find your buddy a flight
+                  </Link>
+                </div>
               </div>
             </div>
-          ) : (
-            <></>
-          )}
-        </div>
+          </>
+        ) : (
+          <>
+            <Box className="mainLoading" sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
+          </>
+        )}
       </div>
     </>
   );

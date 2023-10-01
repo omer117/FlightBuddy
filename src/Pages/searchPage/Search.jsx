@@ -7,10 +7,8 @@ import { Alert, AlertTitle, Button, Card } from "@mui/material";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { Link } from "react-router-dom";
-
-
-// import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-// import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export default function SearchPage(props) {
   // All of the names of the big airports of the world
@@ -26,7 +24,6 @@ export default function SearchPage(props) {
   const [dateValue, setDateValue] = useState("");
   const [errorMessage, setErrorMessage] = useState();
 
-  // console.log(listOfAirports);
   function ComboBox(props) {
     return (
       <Autocomplete
@@ -86,7 +83,6 @@ export default function SearchPage(props) {
     event.preventDefault();
     let formData = new FormData(event.target);
     let realFormData = Object.fromEntries(formData);
-    console.log(`${dateValue.$D + 1}/${dateValue.$M}/${dateValue.$y}`);
     let airport1;
     let airport2;
 
@@ -187,7 +183,7 @@ export default function SearchPage(props) {
                   <ComboBox htmlFor="airport2" name="airport2" />
                 </div>
               </div>
-              {/* <div className="dateSearchDiv">
+              <div className="dateSearchDiv">
                 <p>And when?</p>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
@@ -198,7 +194,7 @@ export default function SearchPage(props) {
                     onChange={(newValue) => setDateValue(newValue)}
                   />
                 </LocalizationProvider>
-              </div> */}
+              </div>
             </form>
           </div>
           <div className="findAPlaceBtnDiv">

@@ -3,6 +3,8 @@ import "./resultComponent.scss";
 
 export default function ResultComponent(props) {
   const [isActive, setActive] = useState(true);
+  const [date, setDate] = useState(localStorage.date);
+
 
   function clickHandler() {
     if (props.classData === "active") {
@@ -30,7 +32,6 @@ export default function ResultComponent(props) {
                 {props.resultData.arr_code}-{props.resultData.arr_airport_name}
               </h2>
               <p className="airportCountry">{props.resultData.arr_country}</p>
-              <p className="timeOfDepartureDate">{props.resultData.arr_time}</p>
               <p className="timeOfDeparture">{props.resultData.arr_hour}</p>
             </div>
           </div>
@@ -44,7 +45,6 @@ export default function ResultComponent(props) {
                 {props.resultData.dep_code}-{props.resultData.dep_airport_name}
               </h2>
               <p className="airportCountry">{props.resultData.dep_country}</p>
-              <p className="timeOfDepartureDate">{props.resultData.dep_time}</p>
               <p className="timeOfDeparture">{props.resultData.dep_hour}</p>
             </div>
           </div>
