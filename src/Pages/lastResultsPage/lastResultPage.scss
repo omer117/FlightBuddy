@@ -14,7 +14,6 @@
 }
 
 .btnDiv {
-    background-color: #000;
     color: #fff;
     padding: 2%;
     display: flex;
@@ -25,6 +24,14 @@
     }
 }
 
+.skyScannerLinks{
+    display: flex;
+    justify-content: space-around;
+    a{
+        
+        color: #fff !important;
+    }
+}
 h1 {
     text-decoration: none !important;
     text-align: center;
@@ -38,7 +45,6 @@ h1 {
 .SaveBtn {
     text-decoration: none !important;
     text-align: center;
-    color: #000 !important;
 
     @media screen and (max-width: 768px) {
         font-size: 16px;
@@ -48,9 +54,8 @@ h1 {
 .btnDiv {
     margin: 5% auto;
     width: fit-content;
-    border-color: #000 !important;
-    border-style: groove;
     border-radius: 2px;
+    background-color: #000;
 
     @media screen and (max-width: 768px) {
         margin: 2% auto;

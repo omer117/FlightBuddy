@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { Alert, AlertTitle, Button, Card } from "@mui/material";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -98,11 +98,20 @@ export default function SearchPage(props) {
     props.setterFunction([airport1, airport2, realFormData.dateOfFlight]);
     localStorage.setItem("firstFlight", airport1);
     localStorage.setItem("secondFlight", airport2);
+    let n = dateValue.$D; 
+    if(n<10){
+      n = `0${dateValue.$D}`
+    }
     localStorage.setItem(
       "date",
-      `${dateValue.$D + 1}/${dateValue.$M}/${dateValue.$y}`
+      `${n}/${dateValue.$M + 1}/${dateValue.$y}`
+    );
+    localStorage.setItem(
+      "skyScannerDate",
+      `${dateValue.$y - 2000}${dateValue.$M + 1}${n}`
     );
   };
+  console.log("imm" + (dateValue.$y - 2000));
 
   useEffect(() => {
     // a function that gets the list of airports after the algorithm has finished
@@ -173,16 +182,6 @@ export default function SearchPage(props) {
           </div>
           <div className="searchDiv">
             <form onSubmit={onFormSubmit} id="findAirportForm">
-              <div className="placesSearchDiv">
-                <div className="userOrigin">
-                  <p>I'm coming from</p>
-                  <ComboBox htmlFor="airport1" name="airport1" />
-                </div>
-                <div className="BuddyOrigin">
-                  <p>My buddy comes from</p>
-                  <ComboBox htmlFor="airport2" name="airport2" />
-                </div>
-              </div>
               <div className="dateSearchDiv">
                 <p>And when?</p>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -194,6 +193,16 @@ export default function SearchPage(props) {
                     onChange={(newValue) => setDateValue(newValue)}
                   />
                 </LocalizationProvider>
+              </div>
+              <div className="placesSearchDiv">
+                <div className="userOrigin">
+                  <p>I'm coming from</p>
+                  <ComboBox htmlFor="airport1" name="airport1" />
+                </div>
+                <div className="BuddyOrigin">
+                  <p>My buddy comes from</p>
+                  <ComboBox htmlFor="airport2" name="airport2" />
+                </div>
               </div>
             </form>
           </div>

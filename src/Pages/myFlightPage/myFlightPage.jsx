@@ -1,20 +1,19 @@
 
 import './myFlightPage.scss'
-import { useState } from "react";
 import axios from "axios";
 import ResultComponent from "../../Components/ResultComponent/resultComponent";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function MyFlightPage(props) {
   const [userFlights, setUserFlights] = useState([]);
 
   console.log(JSON.parse(localStorage.getItem("user_id")));
-
   useState(() => {
     function setter() {
       axios
         .post(
-          "https://flightbuddyserver.onrender.com/AuthAPI/findUserFlightById",
+          "https://flightbuddyserver.onrender.com/flightsAPI/findFlightById",
           {
             user_id: `${JSON.parse(localStorage.getItem("user_id"))}`,
           }

@@ -12,14 +12,14 @@
     border-color: #000;
     border-style: groove;
     border-radius: 2px;
-    background: #35A29F;
+    background: #35a29f;
     margin: 5% auto; // Adjusted margin
 
     padding: 1%; // Adjusted padding
     width: 80%; // Adjusted width
     display: flex;
     flex-direction: column;
-    
+
     .infoDiv {
         display: flex;
 
@@ -30,7 +30,10 @@
             flex-direction: column;
             justify-content: space-around;
 
-            .Duration, .flightCodes, .illustrate, .stopsInfo {
+            .Duration,
+            .flightCodes,
+            .illustrate,
+            .stopsInfo {
                 color: #000 !important;
                 @include paragraphStyling;
                 font-size: 12px; // Smaller font size
@@ -55,15 +58,15 @@
     border-radius: 2px;
     background-color: #eeeeeed1;
     margin: 5% auto; // Adjusted margin
-
+    transition: 0.3s;
     padding: 1%; // Adjusted padding
     width: 80%; // Adjusted width
     display: flex;
     flex-direction: column;
 
     &:hover {
-        width: 90%;
-        height: 110% !important; // Adjusted height
+        background: #7db041; // Green background color when selected
+        color: #fff !important;
     }
 
     &:active {
@@ -80,7 +83,10 @@
             flex-direction: column;
             justify-content: space-around;
 
-            .Duration, .flightCodes, .illustrate, .stopsInfo {
+            .Duration,
+            .flightCodes,
+            .illustrate,
+            .stopsInfo {
                 color: #000 !important;
                 @include paragraphStyling;
                 font-size: 12px; // Smaller font size
@@ -114,18 +120,23 @@
     }
 }
 
-.airportHeader, .airportName, .airportCountry, .timeOfDepartureDate, .timeOfDeparture {
+.airportHeader,
+.airportName,
+.airportCountry,
+.timeOfDepartureDate,
+.timeOfDeparture {
     color: #000 !important;
-    font-size: 14px; 
+    font-size: 14px;
     @include paragraphStyling;
 }
 
 @media screen and (max-width: 768px) {
-    .mainResultDiv, .mainResultDivActive {
-        width: 95%; 
+    .mainResultDiv,
+    .mainResultDivActive {
+        width: 95%;
     }
 
     .pricingDiv {
-        margin-left: 3%; 
+        margin-left: 3%;
     }
 }
