@@ -98,20 +98,16 @@ export default function SearchPage(props) {
     props.setterFunction([airport1, airport2, realFormData.dateOfFlight]);
     localStorage.setItem("firstFlight", airport1);
     localStorage.setItem("secondFlight", airport2);
-    let n = dateValue.$D; 
-    if(n<10){
-      n = `0${dateValue.$D}`
+    let n = dateValue.$D;
+    if (n < 10) {
+      n = `0${dateValue.$D}`;
     }
-    localStorage.setItem(
-      "date",
-      `${n}/${dateValue.$M + 1}/${dateValue.$y}`
-    );
+    localStorage.setItem("date", `${n}/${dateValue.$M + 1}/${dateValue.$y}`);
     localStorage.setItem(
       "skyScannerDate",
       `${dateValue.$y - 2000}${dateValue.$M + 1}${n}`
     );
   };
-  console.log("imm" + (dateValue.$y - 2000));
 
   useEffect(() => {
     // a function that gets the list of airports after the algorithm has finished
@@ -142,16 +138,18 @@ export default function SearchPage(props) {
       let tempArr = [];
       if (listOfAirports[0] !== null) {
         for (let i = 0; i < listOfAirports.length; i++) {
-          await axios
-            .post(
-              "https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportData",
-              {
-                targetAirport: listOfAirports[i].arr_code,
-              }
-            )
-            .then((response) => {
-              tempArr.push(response.data);
-            });
+          if (listOfAirports[i] !== null) {
+            await axios
+              .post(
+                "https://flightbuddyserver.onrender.com/flightsAPI/getChosenAirportData",
+                {
+                  targetAirport: listOfAirports[i].arr_code,
+                }
+              )
+              .then((response) => {
+                tempArr.push(response.data);
+              });
+          }
         }
       }
       setListOfAirportAlgoData(tempArr);
@@ -159,7 +157,7 @@ export default function SearchPage(props) {
     setter();
   }, [listOfAirports]);
 
-  console.log(listOfAirports[0]);
+  console.log(listOfAirports);
   // A mapped array of airports data that goes to JSX Object.
   let chosenList = listOfAirportAlgoData?.map((airport) => {
     return (
