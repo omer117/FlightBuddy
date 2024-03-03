@@ -17,6 +17,12 @@ export default function LastResultPage(props) {
     whereToSecond: chosenFlights[1].arr_code,
   };
 
+  if (flightsData.date.length === 5) {
+    flightsData.date = flightsData.date.split("");
+    flightsData.date.splice(2, 0, "0");
+    flightsData.date = flightsData.date.join("");
+  }
+
   let FirstSkyScannerLink = `https://www.skyscanner.co.il/transport/flights/${flightsData.fromWhereFirst}/${flightsData.whereToFirst}/${flightsData.date}/?adultsv2=1&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0`;
   let SecondSkyScannerLink = `https://www.skyscanner.co.il/transport/flights/${flightsData.fromWhereSecond}/${flightsData.whereToSecond}/${flightsData.date}/?adultsv2=1&cabinclass=economy&childrenv2=&inboundaltsenabled=false&outboundaltsenabled=false&preferdirects=false&ref=home&rtn=0`;
 

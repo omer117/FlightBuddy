@@ -30,7 +30,6 @@ export default function NextFlightPage(props) {
     // OrigSetter(props.data[1], Orig);
   }, [Orig]);
 
-  console.log(secondResults);
   useEffect(() => {
     let secondResultsJSX = secondResults?.map((result, index) => {
       return (

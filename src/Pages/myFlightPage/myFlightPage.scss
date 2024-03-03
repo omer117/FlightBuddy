@@ -1,12 +1,30 @@
-.containerDiv{
+.containerDiv {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url('../../assets/images/imgForRegister.png');
+    background-image: url("../../assets/images/imgForRegister.png");
     padding: 1%;
-
 }
-.mainResultDiv{
 
+.mainResultDiv {
     background-color: rgba(238, 238, 238, 0.8196078431);
+}
+
+.didNotBookedYet {
+    width: auto;
+    height: auto;
+    background-color: whitesmoke !important;
+    padding: 4%;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+
+    a {
+        padding: 3%;
+        margin: auto !important;
+
+        background: #35a29f;
+        border-radius: 1%;
+        color: white !important;
+    }
 }

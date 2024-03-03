@@ -50,7 +50,6 @@ export default function ResultPage(props) {
     setFirstResultsJsx(firstResultJSX);
   }, [firstResults]);
 
-  console.log(localStorage.date);
   return (
     <>
       <div className="containerDiv">

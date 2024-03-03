@@ -36,9 +36,6 @@ export default function RegisterPage(props) {
       email: data.get("email"),
       password: data.get("password"),
     };
-    console.log(userValidation(dataObject.username));
-    console.log(passwordValidation(dataObject.password));
-    console.log(emailValidation(dataObject.email));
     if (
       userValidation(dataObject.username) &&
       passwordValidation(dataObject.password) &&
@@ -51,7 +48,6 @@ export default function RegisterPage(props) {
           password: dataObject.password,
         })
         .then((response) => {
-          console.log(response.data);
           if (response.status === 200) {
             setToken(response.data.token);
             props.userSetter(dataObject.username);
@@ -62,8 +58,11 @@ export default function RegisterPage(props) {
             );
             navi("/Search");
           } else if (response.status === 500) {
-            setErrorMessage("Invalid Input,please try again");
+            alert("error" + "Invalid Input,please try again");
           }
+        })
+        .catch((err) => {
+          alert("Error: " + err.message);
         });
     } else {
       setErrorMessage("Please enter a valid password");
@@ -147,15 +146,15 @@ export default function RegisterPage(props) {
                   </Grid>
                 </Grid>
               </Grid>
-                <Grid sx={{mt:3}}>
-                  <Alert severity="info">
-                    <AlertTitle>Info</AlertTitle>
-                    Please enter a valid password:
-                    <strong>
+              <Grid sx={{ mt: 3 }}>
+                <Alert severity="info">
+                  <AlertTitle>Info</AlertTitle>
+                  Please enter a valid password:
+                  <strong>
                     <p>more then 8 characters</p>
-                    </strong>
-                  </Alert>
-                </Grid>
+                  </strong>
+                </Alert>
+              </Grid>
             </Box>
           </Box>
         </Grid>

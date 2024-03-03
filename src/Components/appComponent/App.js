@@ -13,15 +13,10 @@ import FooterComponent from '../footerComponent/footerComponent';
 
 export function App() {
   const [chosenAirportsDataList, setChosenAirportsDataList] = useState([]);
-  const [firstChosenAirportsDataList, setFirstChosenFlightDataList] = useState(
-    {}
-  );
-  const [secondChosenAirportsDataList, setSecondChosenFlightDataList] =
-    useState({});
+  const [firstChosenAirportsDataList, setFirstChosenFlightDataList] = useState({});
+  const [secondChosenAirportsDataList, setSecondChosenFlightDataList] =useState({});
   const [chosenFlight, setChosenFlight] = useState([])
   const [user, setUser] = useState('')
-  console.log(firstChosenAirportsDataList);
-  console.log(secondChosenAirportsDataList);
 
   useEffect(() => {
     window.addEventListener("beforeunload", (localStorage.clear()));
@@ -39,7 +34,7 @@ export function App() {
         <Route path="/lastResult" element={<LastResultPage user={user} data={chosenFlight} />} />
         <Route path="/Register" element={<RegisterPage userSetter={setUser} />} />
         <Route path="/" element={<LogInPage userSetter={setUser} />} />
-        <Route path="/myFlights" element={<MyFlightPage/>} />
+        <Route path="/myFlights" element={<MyFlightPage />} />
         <Route path="/nextFlight/:Orig" element={
           <NextFlightPage
             setter2={setSecondChosenFlightDataList}
@@ -52,7 +47,7 @@ export function App() {
         />
         <Route path="/Search" element={<SearchPage setterFunction={setChosenAirportsDataList} />} />
       </Routes>
-      <FooterComponent/>
+      <FooterComponent />
     </>
   );
 }
